@@ -21,7 +21,7 @@ export default function Nav() {
         scrolled ? "bg-ink/80 backdrop-blur-md border-b border-cream-12 py-3" : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between">
+      <div className="w-full mx-auto px-6 md:px-12 xl:px-16 flex items-center justify-between">
         <Link href="/" className="font-display font-bold text-xl tracking-wide uppercase text-cream">
           {content.identity.name}
         </Link>
