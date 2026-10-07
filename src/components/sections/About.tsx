@@ -22,7 +22,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 flex flex-col items-start mt-6 lg:mt-0">
+        <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left mt-6 lg:mt-0">
           <span className="font-display font-semibold text-xs tracking-widest uppercase text-accent mb-4">
             Sobre Mí
           </span>

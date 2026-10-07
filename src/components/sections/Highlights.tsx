@@ -4,7 +4,7 @@ import { content } from "@/app/content";
 export default function Highlights() {
   return (
     <section id="highlights" className="py-24 md:py-[128px] px-5 md:px-8 max-w-6xl mx-auto">
-      <div className="flex flex-col mb-12">
+      <div className="flex flex-col items-center text-center md:items-start md:text-left mb-12">
         <span className="font-display font-semibold text-xs tracking-widest uppercase text-cream-45 mb-4">
           Lo más destacado
         </span>

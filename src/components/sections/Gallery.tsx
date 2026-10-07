@@ -34,7 +34,7 @@ export default function Gallery() {
 
   return (
     <section id="galeria" className="py-24 md:py-[128px] px-5 md:px-8 max-w-6xl mx-auto">
-      <div className="flex flex-col mb-12 text-left">
+      <div className="flex flex-col items-center text-center md:items-start md:text-left mb-12">
         <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-[60px] leading-[1.1] tracking-[-1.5px] text-white mb-4">
           En directo
         </h2>
