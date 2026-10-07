@@ -46,18 +46,9 @@ export default function Hero() {
     <section ref={container} className="relative w-full h-[100svh] min-h-[640px] flex items-center justify-center overflow-hidden">
       {/* 1. Fondo fotográfico */}
       <div className="absolute inset-0 z-0 bg-ink">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="w-full h-full object-cover opacity-30 md:hidden"
-        >
-          {/* PENDIENTE: Añadir src de video real */}
-        </video>
         <div 
-          className="hidden md:block w-full h-full bg-cover bg-no-repeat"
-          style={{ backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundPosition: 'center 40%' }}
+          className="w-full h-full bg-cover bg-no-repeat"
+          style={{ backgroundImage: 'url("/assets/hero-bg.png")', backgroundPosition: 'center 40%' }}
         />
       </div>
 
