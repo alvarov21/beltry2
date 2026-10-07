@@ -8,9 +8,14 @@
   --color-cream-12: #f3ece41f;
   --color-accent: #ff2452;
   --color-deepred: #3d0b12;
-  
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif !important;
+}
+
+.font-sans {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif !important;
 }
 
 @layer utilities {

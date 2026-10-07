@@ -44,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${bricolage.variable}`}>
-      <body className="antialiased selection:bg-accent selection:text-white">
+      <body className="antialiased selection:bg-accent selection:text-white font-sans">
         <div 
           className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay animate-grain" 
           style={{ backgroundImage: 'url("/assets/noise.png")' }}
