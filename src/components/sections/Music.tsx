@@ -5,12 +5,12 @@ export default function Music() {
     <section id="musica" className="bg-ink-2 border-y border-cream-12 py-24 md:py-[128px]">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
         
-        <div className="flex flex-col mb-12">
-          <span className="font-display font-semibold text-xs tracking-widest uppercase text-cream-45 mb-4">
+        <div className="flex flex-col mb-12 items-center text-center">
+          <span className="font-display font-semibold text-xs tracking-widest uppercase text-accent mb-4">
             Música & Sets
           </span>
-          <h2 className="font-display font-extrabold text-[60px] leading-[60px] tracking-[-1.5px] text-white mb-4">
-            Escucha a Beltry
+          <h2 className="font-display font-extrabold text-[48px] md:text-[60px] leading-[1.1] tracking-[-1.5px] text-white max-w-3xl">
+            Escucha el <span className="text-accent">sonido</span> que funciona.
           </h2>
         </div>
 

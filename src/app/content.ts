@@ -17,7 +17,7 @@ export const content = {
       type: "Lanzamiento",
       title: "La Penúltima Vol.1",
       subtitle: "Mix urbano 2026 · YouTube",
-      url: "https://www.youtube.com/watch?v=[PENDIENTE:ID_YOUTUBE_1]", // PENDIENTE
+      url: "https://youtu.be/37bx0yFu7pU", // PENDIENTE
       image: "/assets/highlight-1.jpg" // PENDIENTE
     },
     {
@@ -36,7 +36,7 @@ export const content = {
     }
   ],
   music: {
-    youtube1: "[PENDIENTE:ID_YOUTUBE_1]", // ID de "LA PENULTIMA Vol.1 | Mix urbano 2026 | Beltry"
+    youtube1: "37bx0yFu7pU", // ID de "LA PENULTIMA Vol.1 | Mix urbano 2026 | Beltry"
     youtube2: "[PENDIENTE:ID_YOUTUBE_2]", // ID de "BELTRY LIVE SET @Millennium | Reggaeton & Urban Mix 2026"
     tiktokUser: "beltry_dj",
     tiktokVideo: "[PENDIENTE:ID_TIKTOK]" // PENDIENTE
