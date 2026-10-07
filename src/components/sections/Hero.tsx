@@ -44,7 +44,7 @@ export default function Hero() {
 
   return (
     <section ref={container} className="relative w-full h-[100svh] min-h-[640px] flex items-center justify-center overflow-hidden">
-      {/* 1. Fondo parallax */}
+      {/* 1. Fondo fotográfico */}
       <div className="absolute inset-0 z-0 bg-ink">
         <video 
           autoPlay 
@@ -56,22 +56,22 @@ export default function Hero() {
           {/* PENDIENTE: Añadir src de video real */}
         </video>
         <div 
-          className="hidden md:block w-full h-full bg-cover bg-center bg-no-repeat opacity-80 mix-blend-luminosity"
-          style={{ backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundPosition: 'center 20%' }}
+          className="hidden md:block w-full h-full bg-cover bg-no-repeat"
+          style={{ backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundPosition: 'center 40%' }}
         />
       </div>
 
-      {/* 2. Degradado vertical suave */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-ink/20 via-transparent to-ink pointer-events-none" />
+      {/* 2. Oscurecimiento general para lectura del texto */}
+      <div className="absolute inset-0 z-10 bg-black/40 pointer-events-none" />
 
-      {/* 3. Viñeta suave */}
-      <div className="absolute inset-0 z-10 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 20%, rgba(10, 5, 6, 0.7) 100%)' }} />
+      {/* 3. Degradado hacia el color base en la parte inferior */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-transparent to-ink pointer-events-none" />
 
-      {/* 4. Capa de tinte (Color principal) */}
-      <div className="absolute inset-0 z-10 bg-accent/10 mix-blend-color pointer-events-none" />
+      {/* 4. Viñeta suave en los bordes */}
+      <div className="absolute inset-0 z-10 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 40%, rgba(10, 5, 6, 0.6) 100%)' }} />
 
-      {/* 5. Goo reducido para no emborronar la foto */}
-      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none mix-blend-screen opacity-60">
+      {/* 5. Goo reducido al mínimo (solo para dar un toque sutil de luz) */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none mix-blend-screen opacity-20">
         <svg width="0" height="0" className="absolute">
           <filter id="goo">
             <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="b"/>
