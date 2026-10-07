@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #07060d;
-  --color-ink-2: #0f0d1a;
-  --color-cream: #eeeaf6;
-  --color-cream-45: #eeeaf673;
-  --color-cream-12: #eeeaf61f;
-  --color-accent: #6a3dff;
-  --color-deepviolet: #1a0b3d;
+  --color-ink: #0a0506;
+  --color-ink-2: #140a0c;
+  --color-cream: #f3ece4;
+  --color-cream-45: #f3ece473;
+  --color-cream-12: #f3ece41f;
+  --color-accent: #ff1e3c;
+  --color-deepred: #3d0b12;
   
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
@@ -15,10 +15,10 @@
 
 @layer utilities {
   .bg-iridescent {
-    background-image: linear-gradient(120deg, #7a3cff, #4d6bff 50%, #38c6ff);
+    background-image: linear-gradient(120deg, #ff1e3c, #ff5630 50%, #ff8a3d);
   }
   .text-gradient-iridescent {
-    background-image: linear-gradient(120deg, #7a3cff, #4d6bff 50%, #38c6ff);
+    background-image: linear-gradient(120deg, #ff1e3c, #ff5630 50%, #ff8a3d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -32,7 +32,7 @@
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(120deg, #7a3cff, #4d6bff 50%, #38c6ff);
+    background: linear-gradient(120deg, #ff1e3c, #ff5630 50%, #ff8a3d);
     z-index: -1;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;

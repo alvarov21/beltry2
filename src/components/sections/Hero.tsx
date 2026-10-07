@@ -62,13 +62,13 @@ export default function Hero() {
       </div>
 
       {/* 2. Degradado vertical */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-ink/40 via-deepviolet/30 to-ink" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-ink/40 via-deepred/30 to-ink" />
 
       {/* 3. Viñeta */}
       <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(circle at 50% 45%, transparent, rgba(7, 6, 13, 0.85))' }} />
 
       {/* 4. Capa mix-blend */}
-      <div className="absolute inset-0 z-10 bg-deepviolet mix-blend-soft-light opacity-50" />
+      <div className="absolute inset-0 z-10 bg-deepred mix-blend-soft-light opacity-50" />
 
       {/* 5. Goo */}
       <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">

@@ -19,7 +19,7 @@ export default function Music() {
           <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/15 rounded-full blur-[120px] pointer-events-none -z-10" />
           
           {/* YouTube 1 */}
-          <div className="relative rounded-[28px] border border-accent/40 bg-ink/70 p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(106,61,255,0.15)] aspect-video">
+          <div className="relative rounded-[28px] border border-accent/40 bg-ink/70 p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,30,60,0.15)] aspect-video">
             <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
             <iframe 
               className="w-full h-full rounded-[20px]"
@@ -32,7 +32,7 @@ export default function Music() {
           </div>
 
           {/* YouTube 2 */}
-          <div className="relative rounded-[28px] border border-accent/40 bg-ink/70 p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(106,61,255,0.15)] aspect-video">
+          <div className="relative rounded-[28px] border border-accent/40 bg-ink/70 p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,30,60,0.15)] aspect-video">
             <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
             <iframe 
               className="w-full h-full rounded-[20px]"
@@ -50,7 +50,7 @@ export default function Music() {
             href={content.socials.youtube}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-accent text-white font-sans text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(106,61,255,0.4)]"
+            className="bg-accent text-white font-sans text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,30,60,0.4)]"
           >
             Ver en YouTube
           </a>
