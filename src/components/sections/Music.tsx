@@ -9,8 +9,8 @@ export default function Music() {
           <span className="font-display font-semibold text-xs tracking-widest uppercase text-accent mb-4">
             Música & Sets
           </span>
-          <h2 className="font-display font-extrabold text-[48px] md:text-[60px] leading-[1.1] tracking-[-1.5px] text-white max-w-3xl">
-            Escucha el <span className="text-accent">sonido</span> que funciona.
+          <h2 className="font-display font-extrabold text-[36px] sm:text-[48px] md:text-[60px] lg:text-[68px] leading-[1.1] tracking-tight text-white md:whitespace-nowrap">
+            Escucha el <span className="text-accent">sonido</span> que funciona
           </h2>
         </div>
 
