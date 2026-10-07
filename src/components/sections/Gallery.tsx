@@ -8,6 +8,9 @@ export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Solo usamos las primeras 4 fotos para encajar en el diseño
+  const galleryImages = content.gallery.slice(0, 4);
+
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
     setIsOpen(true);
@@ -15,8 +18,8 @@ export default function Gallery() {
 
   const closeLightbox = () => setIsOpen(false);
 
-  const nextImage = () => setCurrentIndex((prev) => (prev + 1) % content.gallery.length);
-  const prevImage = () => setCurrentIndex((prev) => (prev - 1 + content.gallery.length) % content.gallery.length);
+  const nextImage = () => setCurrentIndex((prev) => (prev + 1) % galleryImages.length);
+  const prevImage = () => setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -31,32 +34,40 @@ export default function Gallery() {
 
   return (
     <section id="galeria" className="py-24 md:py-[128px] px-5 md:px-8 max-w-6xl mx-auto">
-      <div className="flex flex-col mb-12 text-center md:text-left">
-        <h2 className="font-display font-extrabold text-[60px] leading-[60px] tracking-[-1.5px] text-white mb-4">
+      <div className="flex flex-col mb-12 text-left">
+        <h2 className="font-display font-extrabold text-[48px] md:text-[60px] leading-[1.1] tracking-[-1.5px] text-white mb-4">
           En directo
         </h2>
         <p className="font-sans text-lg text-cream/80 max-w-2xl">
-          La energía de cada sesión capturada en imágenes.
+          Momentos de cabina, escenario y público.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        {content.gallery.map((img, idx) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {galleryImages.map((img, idx) => (
           <figure 
             key={idx}
             onClick={() => openLightbox(idx)}
             tabIndex={0}
             onKeyDown={(e) => e.key === "Enter" && openLightbox(idx)}
-            className={`relative aspect-[4/5] rounded-[26px] overflow-hidden cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-accent ${
-              idx === 4 ? "hidden md:block" : ""
-            }`}
+            className="relative aspect-[4/5] rounded-[26px] overflow-hidden cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
           >
             <div className="absolute inset-0 bg-ink-2 animate-pulse -z-10" />
             <img 
               src={img.src} 
               alt={img.alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
             />
+            {/* Degradado inferior base */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent pointer-events-none" />
+            
+            {/* Overlay de color en hover */}
+            <div className="absolute inset-0 bg-accent/0 mix-blend-color transition-all duration-500 group-hover:bg-accent/30 pointer-events-none" />
+            
+            {/* Spotlight inferior en hover */}
+            <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none">
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 120%, rgba(106,61,255,0.45), transparent 60%)' }} />
+            </div>
           </figure>
         ))}
       </div>
@@ -80,8 +91,8 @@ export default function Gallery() {
           </button>
 
           <img 
-            src={content.gallery[currentIndex].src} 
-            alt={content.gallery[currentIndex].alt}
+            src={galleryImages[currentIndex].src} 
+            alt={galleryImages[currentIndex].alt}
             className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg"
           />
 
