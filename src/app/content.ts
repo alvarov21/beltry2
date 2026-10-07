@@ -24,7 +24,7 @@ export const content = {
       type: "Directo",
       title: "Live Set Millennium",
       subtitle: "Reggaeton & Urban Mix 2026",
-      url: "https://www.youtube.com/watch?v=[PENDIENTE:ID_YOUTUBE_2]", // PENDIENTE
+      url: "https://youtu.be/S-4mam--E3U", // PENDIENTE
       image: "/assets/highlight-2.jpg" // PENDIENTE
     },
     {
@@ -37,7 +37,7 @@ export const content = {
   ],
   music: {
     youtube1: "37bx0yFu7pU", // ID de "LA PENULTIMA Vol.1 | Mix urbano 2026 | Beltry"
-    youtube2: "[PENDIENTE:ID_YOUTUBE_2]", // ID de "BELTRY LIVE SET @Millennium | Reggaeton & Urban Mix 2026"
+    youtube2: "S-4mam--E3U", // ID de "BELTRY LIVE SET @Millennium | Reggaeton & Urban Mix 2026"
     tiktokUser: "beltry_dj",
     tiktokVideo: "[PENDIENTE:ID_TIKTOK]" // PENDIENTE
   },
