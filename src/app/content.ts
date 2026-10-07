@@ -42,11 +42,10 @@ export const content = {
     tiktokVideo: "[PENDIENTE:ID_TIKTOK]" // PENDIENTE
   },
   gallery: [
-    { src: "/assets/gallery-1.jpg", alt: "Retrato de Beltry" }, // PENDIENTE
-    { src: "/assets/gallery-2.jpg", alt: "Pantalla BELTRY" }, // PENDIENTE
-    { src: "/assets/gallery-3.jpg", alt: "Cabina con luces" }, // PENDIENTE
-    { src: "/assets/gallery-4.jpg", alt: "Terraza" }, // PENDIENTE
-    { src: "/assets/gallery-5.jpg", alt: "Público en directo" }, // PENDIENTE
+    { src: "/assets/gallery-1.jpg", alt: "Beltry actuando con fuego" },
+    { src: "/assets/gallery-2.jpg", alt: "Pantalla BELTRY" },
+    { src: "/assets/gallery-3.jpg", alt: "Cabina con luces" },
+    { src: "/assets/gallery-4.jpg", alt: "Beltry desde cabina con público" },
   ],
   venues: [
     "Millennium",
