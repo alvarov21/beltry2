@@ -154,7 +154,7 @@ void main() {
 
   v_imageUV += .5;
   v_imageUV.y = 1. - v_imageUV.y;
-}\`;
+}`;
 
 var DEFAULT_MAX_PIXEL_COUNT = 1920 * 1080 * 4;
 var ShaderMount = class {
@@ -250,7 +250,7 @@ var ShaderMount = class {
     Object.entries(this.providedUniforms).forEach(([key, value]) => {
       uniformLocations[key] = this.gl.getUniformLocation(this.program, key);
       if (value instanceof HTMLImageElement) {
-        const aspectRatioUniformName = \`\${key}AspectRatio\`;
+        const aspectRatioUniformName = `${key}AspectRatio`;
         uniformLocations[aspectRatioUniformName] = this.gl.getUniformLocation(this.program, aspectRatioUniformName);
       }
     });
@@ -363,7 +363,7 @@ var ShaderMount = class {
   /** Creates a texture from an image and sets it into a uniform value */
   setTextureUniform = (uniformName, image) => {
     if (!image.complete || image.naturalWidth === 0) {
-      throw new Error(\`Paper Shaders: image for uniform \${uniformName} must be fully loaded\`);
+      throw new Error(`Paper Shaders: image for uniform ${uniformName} must be fully loaded`);
     }
     const existingTexture = this.textures.get(uniformName);
     if (existingTexture) {
@@ -394,7 +394,7 @@ var ShaderMount = class {
     const location = this.uniformLocations[uniformName];
     if (location) {
       this.gl.uniform1i(location, textureUnit);
-      const aspectRatioUniformName = \`\${uniformName}AspectRatio\`;
+      const aspectRatioUniformName = `${uniformName}AspectRatio`;
       const aspectRatioLocation = this.uniformLocations[aspectRatioUniformName];
       if (aspectRatioLocation) {
         const aspectRatio = image.naturalWidth / image.naturalHeight;
@@ -416,13 +416,13 @@ var ShaderMount = class {
     Object.entries(updatedUniforms).forEach(([key, value]) => {
       let cacheValue = value;
       if (value instanceof HTMLImageElement) {
-        cacheValue = \`\${value.src.slice(0, 200)}|\${value.naturalWidth}x\${value.naturalHeight}\`;
+        cacheValue = `${value.src.slice(0, 200)}|${value.naturalWidth}x${value.naturalHeight}`;
       }
       if (this.areUniformValuesEqual(this.uniformCache[key], cacheValue)) return;
       this.uniformCache[key] = cacheValue;
       const location = this.uniformLocations[key];
       if (!location) {
-        console.warn(\`Uniform location for \${key} not found\`);
+        console.warn(`Uniform location for ${key} not found`);
         return;
       }
       if (value instanceof HTMLImageElement) {
@@ -436,7 +436,7 @@ var ShaderMount = class {
             flatArray = value.flat();
             valueLength = firstChildLength;
           } else {
-            console.warn(\`All child arrays must be the same length for \${key}\`);
+            console.warn(`All child arrays must be the same length for ${key}`);
             return;
           }
         } else {
@@ -460,14 +460,14 @@ var ShaderMount = class {
             this.gl.uniformMatrix4fv(location, false, flatArray);
             break;
           default:
-            console.warn(\`Unsupported uniform array length: \${valueLength}\`);
+            console.warn(`Unsupported uniform array length: ${valueLength}`);
         }
       } else if (typeof value === "number") {
         this.gl.uniform1f(location, value);
       } else if (typeof value === "boolean") {
         this.gl.uniform1i(location, value ? 1 : 0);
       } else {
-        console.warn(\`Unsupported uniform type for \${key}: \${typeof value}\`);
+        console.warn(`Unsupported uniform type for ${key}: ${typeof value}`);
       }
     });
   };
@@ -563,8 +563,8 @@ function createProgram(gl, vertexShaderSource2, fragmentShaderSource) {
   const format = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.MEDIUM_FLOAT);
   const precision = format ? format.precision : null;
   if (precision && precision < 23) {
-    vertexShaderSource2 = vertexShaderSource2.replace(/precision\\s+(lowp|mediump)\\s+float;/g, "precision highp float;");
-    fragmentShaderSource = fragmentShaderSource.replace(/precision\\s+(lowp|mediump)\\s+float/g, "precision highp float").replace(/\\b(uniform|varying|attribute)\\s+(lowp|mediump)\\s+(\\w+)/g, "$1 highp $3");
+    vertexShaderSource2 = vertexShaderSource2.replace(/precision\s+(lowp|mediump)\s+float;/g, "precision highp float;");
+    fragmentShaderSource = fragmentShaderSource.replace(/precision\s+(lowp|mediump)\s+float/g, "precision highp float").replace(/\b(uniform|varying|attribute)\s+(lowp|mediump)\s+(\w+)/g, "$1 highp $3");
   }
   const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource2);
   const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
@@ -587,7 +587,7 @@ function createProgram(gl, vertexShaderSource2, fragmentShaderSource) {
   gl.deleteShader(fragmentShader);
   return program;
 }
-var defaultStyle = \`@layer paper-shaders {
+var defaultStyle = `@layer paper-shaders {
   :where([data-paper-shader]) {
     isolation: isolate;
     position: relative;
@@ -604,7 +604,7 @@ var defaultStyle = \`@layer paper-shaders {
       corner-shape: inherit;
     }
   }
-}\`;
+}`;
 function isSafari() {
   const ua = navigator.userAgent.toLowerCase();
   return ua.includes("safari") && !ua.includes("chrome") && !ua.includes("android");
@@ -659,25 +659,25 @@ var ShaderFitOptions = {
   cover: 2
 };
 
-var declarePI = \`
+var declarePI = `
 #define TWO_PI 6.28318530718
 #define PI 3.14159265358979323846
-\`;
-var proceduralHash11 = \`
+`;
+var proceduralHash11 = `
   float hash11(float p) {
     p = fract(p * 0.3183099) + 0.1;
     p *= p + 19.19;
     return fract(p * p);
   }
-\`;
-var proceduralHash21 = \`
+`;
+var proceduralHash21 = `
   float hash21(vec2 p) {
     p = fract(p * vec2(0.3183099, 0.3678794)) + 0.1;
     p += dot(p, p + 19.19);
     return fract(p.x * p.y);
   }
-\`;
-var simplexNoise = \`
+`;
+var simplexNoise = `
 vec3 permute(vec3 x) { return mod(((x * 34.0) + 1.0) * x, 289.0); }
 float snoise(vec2 v) {
   const vec4 C = vec4(0.211324865405187, 0.366025403784439,
@@ -705,9 +705,9 @@ float snoise(vec2 v) {
   g.yz = a0.yz * x12.xz + h.yz * x12.yw;
   return 130.0 * dot(m, g);
 }
-\`;
+`;
 
-var ditheringFragmentShader = \`#version 300 es
+var ditheringFragmentShader = `#version 300 es
 precision mediump float;
 
 uniform float u_time;
@@ -732,10 +732,10 @@ uniform float u_type;
 
 out vec4 fragColor;
 
-\${simplexNoise}
-\${declarePI}
-\${proceduralHash11}
-\${proceduralHash21}
+${simplexNoise}
+${declarePI}
+${proceduralHash11}
+${proceduralHash21}
 
 float getSimplexNoise(vec2 uv, float t) {
   float noise = .5 * snoise(uv - vec2(0., .3 * t));
@@ -948,7 +948,7 @@ void main() {
 
   fragColor = vec4(color, opacity);
 }
-\`;
+`;
 var DitheringShapes = {
   simplex: 1,
   warp: 2,
@@ -965,7 +965,7 @@ var DitheringTypes = {
   "8x8": 4
 };
 
-var imageDitheringFragmentShader = \`#version 300 es
+var imageDitheringFragmentShader = `#version 300 es
 precision mediump float;
 
 uniform vec2 u_resolution;
@@ -997,8 +997,8 @@ uniform float u_colorSteps;
 out vec4 fragColor;
 
 
-\${proceduralHash21}
-\${declarePI}
+${proceduralHash21}
+${declarePI}
 
 float getUvFrame(vec2 uv, vec2 pad) {
   float aa = 0.0001;
@@ -1147,7 +1147,7 @@ void main() {
 
   fragColor = vec4(color, opacity);
 }
-\`;
+`;
 
 function getShaderColorFromString(colorString) {
   if (Array.isArray(colorString)) {
@@ -1186,7 +1186,7 @@ function hexToRgba(hex) {
   return [r, g, b, a];
 }
 function parseRgba(rgba) {
-  const match = rgba.match(/^rgba?\\s*\\(\\s*(\\d+)\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)\\s*(?:,\\s*([0-9.]+))?\\s*\\)$/i);
+  const match = rgba.match(/^rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([0-9.]+))?\s*\)$/i);
   if (!match) return [0, 0, 0, 1];
   return [
     parseInt(match[1] ?? "0") / 255,
@@ -1196,7 +1196,7 @@ function parseRgba(rgba) {
   ];
 }
 function parseHsla(hsla) {
-  const match = hsla.match(/^hsla?\\s*\\(\\s*(\\d+)\\s*,\\s*(\\d+)%\\s*,\\s*(\\d+)%\\s*(?:,\\s*([0-9.]+))?\\s*\\)$/i);
+  const match = hsla.match(/^hsla?\s*\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*(?:,\s*([0-9.]+))?\s*\)$/i);
   if (!match) return [0, 0, 0, 1];
   return [
     parseInt(match[1] ?? "0"),
@@ -1235,7 +1235,7 @@ var fallbackColor = [0, 0, 0, 1];
 
 function getEmptyPixel() {
   if (typeof window === "undefined") {
-    console.warn("Paper Shaders: can\\u2019t create an image on the server");
+    console.warn("Paper Shaders: can\u2019t create an image on the server");
     return void 0;
   }
   const img = new Image();
@@ -1324,7 +1324,7 @@ async function processUniforms(uniformsProp) {
         return;
       }
       if (!isValidUrl(value)) {
-        console.warn(\`Uniform "\${key}" has invalid URL "\${value}". Skipping image loading.\`);
+        console.warn(`Uniform "${key}" has invalid URL "${value}". Skipping image loading.`);
         return;
       }
       const imagePromise = new Promise((resolve, reject) => {
@@ -1338,7 +1338,7 @@ async function processUniforms(uniformsProp) {
           resolve();
         };
         img.onerror = () => {
-          console.error(\`Could not set uniforms. Failed to load image at \${value}\`);
+          console.error(`Could not set uniforms. Failed to load image at ${value}`);
           reject();
         };
         img.src = value;
@@ -1794,29 +1794,29 @@ function ticketClipPath(width, height, geometry = TICKET_GEOMETRY) {
   const n = geometry.notchRadius * width;
   const p = geometry.perforation * width;
   return [
-    \`M \${r} 0\`,
-    \`L \${p - n} 0\`,
-    \`A \${n} \${n} 0 0 0 \${p + n} 0\`,
-    \`L \${width - r} 0\`,
-    \`A \${r} \${r} 0 0 0 \${width} \${r}\`,
-    \`L \${width} \${height - r}\`,
-    \`A \${r} \${r} 0 0 0 \${width - r} \${height}\`,
-    \`L \${p + n} \${height}\`,
-    \`A \${n} \${n} 0 0 0 \${p - n} \${height}\`,
-    \`L \${r} \${height}\`,
-    \`A \${r} \${r} 0 0 0 0 \${height - r}\`,
-    \`L 0 \${r}\`,
-    \`A \${r} \${r} 0 0 0 \${r} 0\`,
+    `M ${r} 0`,
+    `L ${p - n} 0`,
+    `A ${n} ${n} 0 0 0 ${p + n} 0`,
+    `L ${width - r} 0`,
+    `A ${r} ${r} 0 0 0 ${width} ${r}`,
+    `L ${width} ${height - r}`,
+    `A ${r} ${r} 0 0 0 ${width - r} ${height}`,
+    `L ${p + n} ${height}`,
+    `A ${n} ${n} 0 0 0 ${p - n} ${height}`,
+    `L ${r} ${height}`,
+    `A ${r} ${r} 0 0 0 0 ${height - r}`,
+    `L 0 ${r}`,
+    `A ${r} ${r} 0 0 0 ${r} 0`,
     "Z"
   ].join(" ");
 }
 function splitName(name, max = 3) {
-  const clean = name.trim().replace(/\\s+/g, " ").toUpperCase();
+  const clean = name.trim().replace(/\s+/g, " ").toUpperCase();
   if (!clean) return [];
   const lines = [];
   for (const word of clean.split(" ")) {
     if (lines.length < max) lines.push(word);
-    else lines[lines.length - 1] = \`\${lines[lines.length - 1]} \${word}\`;
+    else lines[lines.length - 1] = `${lines[lines.length - 1]} ${word}`;
   }
   return lines;
 }
@@ -1933,8 +1933,8 @@ function TicketCard({
   return /* @__PURE__ */ jsxs(
     "div",
     {
-      className: \`relative select-none \${className ?? ""}\`,
-      style: { width, height, clipPath: \`path('\${ticketClipPath(width, height, geometry)}')\` },
+      className: `relative select-none ${className ?? ""}`,
+      style: { width, height, clipPath: `path('${ticketClipPath(width, height, geometry)}')` },
       children: [
         /* @__PURE__ */ jsx4("div", { className: "absolute inset-0", style: { background: texture.colorBack } }),
         texture.engine === "image" && sourceImage ? /* @__PURE__ */ jsx4(
@@ -1978,7 +1978,7 @@ function TicketCard({
             style: {
               left: perfX,
               width: Math.max(1, 22e-4 * width),
-              backgroundImage: \`repeating-linear-gradient(to bottom, \${layout.inkColor}55 0 \${0.012 * width}px, transparent \${0.012 * width}px \${0.024 * width}px)\`
+              backgroundImage: `repeating-linear-gradient(to bottom, ${layout.inkColor}55 0 ${0.012 * width}px, transparent ${0.012 * width}px ${0.024 * width}px)`
             }
           }
         ),
@@ -2017,12 +2017,12 @@ function TicketCard({
                 left: layout.padding * width,
                 top: layout.labelTop * width,
                 fontSize: layout.labelSize * width,
-                lineHeight: \`\${layout.labelLead * width}px\`,
-                letterSpacing: \`\${layout.labelTracking}em\`
+                lineHeight: `${layout.labelLead * width}px`,
+                letterSpacing: `${layout.labelTracking}em`
               },
               children: [
                 presenter,
-                "\\n",
+                "\n",
                 event
               ]
             }
@@ -2035,8 +2035,8 @@ function TicketCard({
                 left: layout.padding * width,
                 top: layout.nameTop * width,
                 fontSize: layout.nameSize * width * scale,
-                lineHeight: \`\${layout.nameLead * width * scale}px\`,
-                letterSpacing: \`\${layout.nameTracking}em\`
+                lineHeight: `${layout.nameLead * width * scale}px`,
+                letterSpacing: `${layout.nameTracking}em`
               },
               children: lines.map((line, i) => /* @__PURE__ */ jsx4("div", { children: line }, i))
             }
@@ -2049,7 +2049,7 @@ function TicketCard({
                 left: layout.padding * width,
                 top: layout.footerTop * width,
                 fontSize: layout.footerSize * width,
-                letterSpacing: \`\${layout.footerTracking}em\`
+                letterSpacing: `${layout.footerTracking}em`
               },
               children: [
                 venue,
@@ -2068,7 +2068,7 @@ function TicketCard({
                 width: width - perfX,
                 height,
                 fontSize: layout.stubSize * width,
-                letterSpacing: \`\${layout.stubTracking}em\`,
+                letterSpacing: `${layout.stubTracking}em`,
                 opacity: layout.stubOpacity
               },
               children: /* @__PURE__ */ jsx4("span", { style: { writingMode: "vertical-rl" }, children: stubText })
@@ -2097,9 +2097,9 @@ function TiltCard({
       const rect = el.getBoundingClientRect();
       const dx = (e.clientX - rect.left) / rect.width - 0.5;
       const dy = (e.clientY - rect.top) / rect.height - 0.5;
-      el.style.transform = \`perspective(1200px) rotateX(\${-(dy * 2) * maxTilt}deg) rotateY(\${dx * 2 * maxTilt}deg) scale(\${scale})\`;
+      el.style.transform = `perspective(1200px) rotateX(${-(dy * 2) * maxTilt}deg) rotateY(${dx * 2 * maxTilt}deg) scale(${scale})`;
       if (glareRef.current) {
-        glareRef.current.style.background = \`radial-gradient(38% 55% at \${(dx + 0.5) * 100}% \${(dy + 0.5) * 100}%, rgba(255,255,255,\${glare}) 0%, rgba(255,255,255,0) 70%)\`;
+        glareRef.current.style.background = `radial-gradient(38% 55% at ${(dx + 0.5) * 100}% ${(dy + 0.5) * 100}%, rgba(255,255,255,${glare}) 0%, rgba(255,255,255,0) 70%)`;
       }
     },
     [maxTilt, scale, glare]
@@ -2118,7 +2118,7 @@ function TiltCard({
       onPointerEnter: () => setHovering(true),
       onPointerMove: onMove,
       onPointerLeave: onLeave,
-      className: \`relative w-fit will-change-transform \${className ?? ""}\`,
+      className: `relative w-fit will-change-transform ${className ?? ""}`,
       style: {
         transition: hovering ? "none" : "transform 420ms cubic-bezier(0.22, 1, 0.36, 1)",
         transform: "perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)",
@@ -2149,7 +2149,7 @@ function AdmitOneTicket({ tilt, ...props }) {
   return /* @__PURE__ */ jsx4(
     TiltCard,
     {
-      clipPath: \`path('\${ticketClipPath(width, width / geometry.aspect, geometry)}')\`,
+      clipPath: `path('${ticketClipPath(width, width / geometry.aspect, geometry)}')`,
       ...tilt,
       children: /* @__PURE__ */ jsx4(TicketCard, { ...props })
     }
@@ -2164,7 +2164,7 @@ function hslToHex(h, s, l) {
     const v = lig - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
     return Math.round(255 * Math.max(0, Math.min(1, v))).toString(16).padStart(2, "0");
   };
-  return \`#\${channel(0)}\${channel(8)}\${channel(4)}\`;
+  return `#${channel(0)}${channel(8)}${channel(4)}`;
 }
 var pick = (list, rnd) => list[Math.floor(rnd() * list.length) % list.length];
 var between = (min, max, rnd) => min + rnd() * (max - min);
