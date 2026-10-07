@@ -53,7 +53,8 @@ export const content = {
     "Pelícano",
     "Shark",
     "Jowke",
-    "CRVSH"
+    "CRVSH",
+    "Adicto Club"
   ],
   contact: {
     email: "booking@beltry.com", // PENDIENTE
