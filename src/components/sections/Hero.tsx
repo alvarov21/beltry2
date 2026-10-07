@@ -45,7 +45,7 @@ export default function Hero() {
   return (
     <section ref={container} className="relative w-full h-[100svh] min-h-[640px] flex items-center justify-center overflow-hidden">
       {/* 1. Fondo parallax */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-ink">
         <video 
           autoPlay 
           muted 
@@ -56,22 +56,22 @@ export default function Hero() {
           {/* PENDIENTE: Añadir src de video real */}
         </video>
         <div 
-          className="hidden md:block w-full h-full bg-cover bg-center opacity-40"
-          style={{ backgroundImage: 'url("/assets/hero-bg.jpg")' }}
+          className="hidden md:block w-full h-full bg-cover bg-center bg-no-repeat opacity-80 mix-blend-luminosity"
+          style={{ backgroundImage: 'url("/assets/hero-bg.jpg")', backgroundPosition: 'center 20%' }}
         />
       </div>
 
-      {/* 2. Degradado vertical */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-ink/40 via-deepred/30 to-ink" />
+      {/* 2. Degradado vertical suave */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-ink/20 via-transparent to-ink pointer-events-none" />
 
-      {/* 3. Viñeta */}
-      <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(circle at 50% 45%, transparent, rgba(7, 6, 13, 0.85))' }} />
+      {/* 3. Viñeta suave */}
+      <div className="absolute inset-0 z-10 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 20%, rgba(10, 5, 6, 0.7) 100%)' }} />
 
-      {/* 4. Capa mix-blend */}
-      <div className="absolute inset-0 z-10 bg-deepred mix-blend-soft-light opacity-50" />
+      {/* 4. Capa de tinte (Color principal) */}
+      <div className="absolute inset-0 z-10 bg-accent/10 mix-blend-color pointer-events-none" />
 
-      {/* 5. Goo */}
-      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+      {/* 5. Goo reducido para no emborronar la foto */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none mix-blend-screen opacity-60">
         <svg width="0" height="0" className="absolute">
           <filter id="goo">
             <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="b"/>
@@ -79,9 +79,9 @@ export default function Hero() {
           </filter>
         </svg>
         <div className="absolute inset-0" style={{ filter: "url(#goo)" }}>
-          <div className="absolute top-[20%] left-[20%] w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-accent/40 rounded-full blur-3xl animate-float-a" />
-          <div className="absolute top-[40%] right-[15%] w-[35vw] h-[35vw] max-w-[350px] max-h-[350px] bg-accent/30 rounded-full blur-3xl animate-float-b" />
-          <div className="absolute bottom-[10%] left-[40%] w-[30vw] h-[30vw] max-w-[300px] max-h-[300px] bg-[#38c6ff]/30 rounded-full blur-3xl animate-float-c" />
+          <div className="absolute top-[20%] left-[20%] w-[30vw] h-[30vw] max-w-[300px] max-h-[300px] bg-accent/20 rounded-full blur-[60px] animate-float-a" />
+          <div className="absolute top-[40%] right-[15%] w-[25vw] h-[25vw] max-w-[250px] max-h-[250px] bg-accent/15 rounded-full blur-[50px] animate-float-b" />
+          <div className="absolute bottom-[10%] left-[40%] w-[20vw] h-[20vw] max-w-[200px] max-h-[200px] bg-accent/15 rounded-full blur-[40px] animate-float-c" />
         </div>
       </div>
 
