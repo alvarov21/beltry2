@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { content } from "@/app/content";
+import AdmitOneTicket from "@/components/ui/admit-one-ticket";
 
 export default function Booking() {
   const [formData, setFormData] = useState({
@@ -34,8 +35,24 @@ ${formData.mensaje}
   };
 
   return (
-    <section id="booking" className="py-24 md:py-[128px] px-5 md:px-8 max-w-6xl mx-auto">
-      <div className="flex flex-col lg:flex-row gap-10">
+    <section id="booking" className="py-24 md:py-[128px] px-5 md:px-8 max-w-6xl mx-auto flex flex-col items-center">
+      <div className="mb-16 md:mb-20 flex justify-center w-full pointer-events-auto">
+        <div className="hidden sm:block scale-[0.8] md:scale-100 origin-center transition-transform duration-500">
+          <AdmitOneTicket
+            name="Beltry"
+            presenter="Urbano / Reggaeton"
+            event="Contratación"
+            venue="España y LATAM"
+            dates="Tour 2026"
+            stubText="Booking"
+            watermark="VIP"
+            width={700}
+            tilt={{ maxTilt: 12, scale: 1.05, glare: 0.2 }}
+          />
+        </div>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-10 w-full">
         
         {/* Tarjeta Izquierda (Contacto Directo) */}
         <div className="w-full lg:w-1/2 relative flex flex-col justify-between overflow-hidden rounded-[32px] bg-ink-2 p-8 sm:p-10 border border-cream-12">
