@@ -50,9 +50,10 @@ export const content = {
   ],
   venues: [
     "Millennium",
-    "[PENDIENTE: Sala 2]",
-    "[PENDIENTE: Sala 3]",
-    "[PENDIENTE: Sala 4]"
+    "Pelícano",
+    "Shark",
+    "Jowke",
+    "CRVSH"
   ],
   contact: {
     email: "booking@beltry.com", // PENDIENTE
