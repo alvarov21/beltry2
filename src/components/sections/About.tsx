@@ -15,7 +15,7 @@ export default function About() {
             <img 
               src="/assets/about.jpg" 
               alt="Beltry"
-              className="w-full h-full object-cover scale-110"
+              className="w-full h-full object-cover object-[center_15%]"
             />
           </div>
         </div>
