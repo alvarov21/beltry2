@@ -15,7 +15,7 @@
 }
 
 .font-sans {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif !important;
+  font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif !important;
 }
 
 @layer utilities {
@@ -51,7 +51,7 @@
   body {
     background-color: var(--color-ink);
     color: var(--color-cream);
-    font-family: var(--font-sans);
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
     overflow-x: hidden;
   }
 
