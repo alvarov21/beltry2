@@ -1748,8 +1748,8 @@ var TICKET_LAYOUT = {
   stubOpacity: 0.88,
   watermarkSize: 144 / REF,
   watermarkOpacity: 0.6,
-  watermarkColor: "#ffccd6",
-  inkColor: "#1a0005"
+  watermarkColor: "#ffffff",
+  inkColor: "#ffffff"
 };
 var TICKET_TEXTURE = {
   engine: "generative",
