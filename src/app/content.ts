@@ -4,8 +4,8 @@ export const content = {
     tagline: "DJ · URBANO · BARCELONA",
     heroSubtitle: "La Penúltima Vol.1 ya disponible",
     heroVideoUrl: "https://www.youtube.com/watch?v=[PENDIENTE:ID_YOUTUBE_1]", // PENDIENTE: Actualizar URL
-    bio: "Beltry es un DJ Urbano de Barcelona especializado en reggaeton y mix urbano. Con un estilo que conecta directamente con la pista, transforma cada set en una experiencia de alta energía. [PENDIENTE: biografía completa y cita de Beltry].",
-    quote: "La noche no se cuenta, se vive en cada beat. [PENDIENTE: Cita real de Beltry]",
+    bio: "Beltry es un DJ Urbano de Barcelona especializado en reggaeton y mix urbano. Con un estilo que conecta directamente con la pista, transforma cada set en una experiencia de alta energía, fusionando los ritmos clásicos del género con los sonidos más frescos de la escena actual.",
+    quote: "La noche no se cuenta, se vive en cada beat.",
   },
   stats: {
     tiktokFollowers: "158K",
