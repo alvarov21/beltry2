@@ -53,7 +53,9 @@ export const content = {
     "Shark",
     "Jowke",
     "CRVSH",
-    "Adicto Club"
+    "Adicto Club",
+    "Cocoa",
+    "Bro Málaga"
   ],
   contact: {
     email: "booking@beltry.com", // PENDIENTE
