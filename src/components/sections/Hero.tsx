@@ -1,65 +1,108 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Play } from "@phosphor-icons/react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { content } from "@/app/content";
 
-export function Hero() {
+export default function Hero() {
+  const container = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isReduced) return;
+
+    const ctx = gsap.context(() => {
+      // Parallax on text
+      gsap.to(textRef.current, {
+        y: "20vh",
+        ease: "none",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+      
+      // Entrance animation
+      gsap.from(textRef.current?.children || [], {
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power3.out",
+        delay: 0.2
+      });
+    }, container);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative min-h-[100dvh] w-full flex flex-col justify-end overflow-hidden">
-      {/* Background Image with Tonal Veil and Vignette */}
+    <section ref={container} className="relative w-full h-[100svh] min-h-[640px] flex items-center justify-center overflow-hidden">
+      {/* 1. Fondo parallax */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/assets/photos/retrato-estudio-oscuro.jpg"
-          alt="Beltry en directo"
-          fill
-          className="object-cover object-top"
-          priority
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="w-full h-full object-cover opacity-30 md:hidden"
+        >
+          {/* PENDIENTE: Añadir src de video real */}
+        </video>
+        <div 
+          className="hidden md:block w-full h-full bg-cover bg-center opacity-40"
+          style={{ backgroundImage: 'url("/assets/hero-bg.jpg")' }}
         />
-        {/* Tonal Veil for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F1A]/30 via-[#0B0F1A]/50 to-[#0B0F1A] mix-blend-multiply" />
-        {/* Vignette */}
-        <div className="absolute inset-0 shadow-[inset_0_0_150px_rgba(11,15,26,0.9)] pointer-events-none" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12 md:pb-24 flex flex-col justify-end">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
-          
-          {/* Wordmark Giant */}
-          <div className="md:col-span-8 flex flex-col">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 mb-4 ml-1">
-              DJ Urbano de Barcelona
-            </span>
-            <h1 className="font-display text-[15vw] md:text-[180px] leading-[0.8] tracking-tighter text-[var(--color-foreground)]">
-              BELTRY
-            </h1>
-          </div>
+      {/* 2. Degradado vertical */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-ink/40 via-deepviolet/30 to-ink" />
 
-          {/* Copy and CTAs */}
-          <div className="md:col-span-4 flex flex-col gap-6 md:pb-4">
-            <p className="text-lg md:text-xl text-white/80 max-w-[20ch] leading-snug text-balance">
-              Energía, cercanía y el mejor reggaeton para tu noche.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 items-start">
-              <Link
-                href="#contratar"
-                className="group flex items-center gap-2 bg-[var(--color-foreground)] text-[var(--color-base)] px-6 py-3 rounded-sm font-medium hover:scale-[0.98] transition-transform"
-              >
-                Contratar
-                <ArrowRight weight="light" className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="#escuchar"
-                className="group flex items-center gap-2 px-6 py-3 rounded-sm font-medium text-white border border-white/20 hover:bg-white/5 transition-colors"
-              >
-                <Play weight="light" className="w-4 h-4" />
-                Escuchar último mix
-              </Link>
-            </div>
-          </div>
-          
+      {/* 3. Viñeta */}
+      <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(circle at 50% 45%, transparent, rgba(7, 6, 13, 0.85))' }} />
+
+      {/* 4. Capa mix-blend */}
+      <div className="absolute inset-0 z-10 bg-deepviolet mix-blend-soft-light opacity-50" />
+
+      {/* 5. Goo */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
+        <svg width="0" height="0" className="absolute">
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="b"/>
+            <feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"/>
+          </filter>
+        </svg>
+        <div className="absolute inset-0" style={{ filter: "url(#goo)" }}>
+          <div className="absolute top-[20%] left-[20%] w-[40vw] h-[40vw] max-w-[400px] max-h-[400px] bg-accent/40 rounded-full blur-3xl animate-float-a" />
+          <div className="absolute top-[40%] right-[15%] w-[35vw] h-[35vw] max-w-[350px] max-h-[350px] bg-accent/30 rounded-full blur-3xl animate-float-b" />
+          <div className="absolute bottom-[10%] left-[40%] w-[30vw] h-[30vw] max-w-[300px] max-h-[300px] bg-[#38c6ff]/30 rounded-full blur-3xl animate-float-c" />
+        </div>
+      </div>
+
+      {/* 6. Contenido */}
+      <div ref={textRef} className="relative z-20 flex flex-col items-center text-center px-5">
+        <p className="font-display font-semibold text-[12px] md:text-[16px] uppercase tracking-[0.3em] md:tracking-[0.45em] text-cream-45 mb-4">
+          {content.identity.tagline}
+        </p>
+        <h1 className="sr-only">{content.identity.name} - {content.identity.tagline}</h1>
+        <div className="font-display font-extrabold text-white uppercase tracking-tighter leading-none mb-6" style={{ fontSize: "clamp(3rem, 18vw, 640px)" }}>
+          {content.identity.name}
+        </div>
+        <p className="font-sans text-lg md:text-xl text-cream/80 max-w-md font-medium">
+          {content.identity.heroSubtitle}
+        </p>
+      </div>
+
+      {/* 7. Indicador scroll */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex justify-center">
+        <div className="w-[24px] h-[40px] rounded-full border border-cream/40 flex justify-center p-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-cream animate-cue" />
         </div>
       </div>
     </section>

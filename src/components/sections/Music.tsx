@@ -1,0 +1,69 @@
+import { content } from "@/app/content";
+
+export default function Music() {
+  return (
+    <section id="musica" className="bg-ink-2 border-y border-cream-12 py-24 md:py-[128px]">
+      <div className="max-w-6xl mx-auto px-5 md:px-8">
+        
+        <div className="flex flex-col mb-12">
+          <span className="font-display font-semibold text-xs tracking-widest uppercase text-cream-45 mb-4">
+            Música & Sets
+          </span>
+          <h2 className="font-display font-extrabold text-[60px] leading-[60px] tracking-[-1.5px] text-white mb-4">
+            Escucha a Beltry
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          
+          {/* YouTube 1 */}
+          <div className="liquid-border rounded-[28px] bg-ink/70 p-2 backdrop-blur relative aspect-video">
+            <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
+            <iframe 
+              className="w-full h-full rounded-[20px]"
+              src={`https://www.youtube-nocookie.com/embed/${content.music.youtube1}?rel=0&color=white`}
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowFullScreen
+            />
+          </div>
+
+          {/* YouTube 2 */}
+          <div className="liquid-border rounded-[28px] bg-ink/70 p-2 backdrop-blur relative aspect-video">
+            <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
+            <iframe 
+              className="w-full h-full rounded-[20px]"
+              src={`https://www.youtube-nocookie.com/embed/${content.music.youtube2}?rel=0&color=white`}
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowFullScreen
+            />
+          </div>
+
+        </div>
+
+        <div className="flex flex-wrap gap-4 items-center mt-8">
+          <a 
+            href={content.socials.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-accent text-white font-sans text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-accent/90 transition-colors"
+          >
+            Ver en YouTube
+          </a>
+          <a 
+            href={content.socials.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-transparent border border-cream-12 text-white font-sans text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-white/5 transition-colors"
+          >
+            Ver en TikTok
+          </a>
+        </div>
+        
+      </div>
+    </section>
+  );
+}

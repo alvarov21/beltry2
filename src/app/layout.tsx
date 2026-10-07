@@ -1,48 +1,39 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Geist } from "next/font/google";
+import { Inter, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/config/site";
 
-const bebasNeue = Bebas_Neue({
-  weight: "400",
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistSans = Geist({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
-  display: "swap",
+  variable: "--font-bricolage",
+  weight: ["400", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: `${siteConfig.name} - DJ urbano en Barcelona`,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
+  title: "Beltry — DJ Urbano en Barcelona",
+  description: "Web oficial de Beltry, DJ urbano de Barcelona. Booking para salas, festivales y eventos privados. Escucha La Penúltima Vol.1 y su live set en Millennium.",
+  keywords: ["DJ urbano Barcelona", "booking DJ Barcelona", "DJ reggaeton Barcelona", "mix urbano 2026", "Beltry"],
   openGraph: {
-    type: "website",
     locale: "es_ES",
-    url: siteConfig.url,
-    title: `${siteConfig.name} - DJ urbano en Barcelona`,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    type: "website",
+    title: "Beltry — DJ Urbano en Barcelona",
+    description: "Web oficial de Beltry, DJ urbano de Barcelona. Booking para salas, festivales y eventos privados.",
     images: [
       {
-        url: `${siteConfig.url}/og-image.jpg`,
+        url: "/assets/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: "Beltry DJ Urbano",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} - DJ urbano en Barcelona`,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og-image.jpg`],
   },
 };
 
@@ -52,8 +43,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${bebasNeue.variable} ${geistSans.variable}`}>
-      <body className="bg-[var(--color-base)] text-[var(--color-foreground)] min-h-[100dvh] flex flex-col antialiased">
+    <html lang="es" className={`${inter.variable} ${bricolage.variable}`}>
+      <body className="antialiased selection:bg-accent selection:text-white">
+        <div 
+          className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay animate-grain" 
+          style={{ backgroundImage: 'url("/assets/noise.png")' }}
+        />
         {children}
       </body>
     </html>

@@ -1,29 +1,26 @@
-# DESIGN SYSTEM: La Penúltima (El Tránsito)
+# Design System: BELTRY Web Premium
 
-## 1. Diales
-* **DESIGN_VARIANCE:** 8 (Composición asimétrica, estilo póster)
-* **MOTION_INTENSITY:** 7 (Motion cinemático y físico, ScrollTrigger para narrativa)
-* **VISUAL_DENSITY:** 3 (Respiración amplia, mucho espacio negativo, minimalismo oscuro)
+## 1. Tipografía
+- **Display / Wordmark / Headlines:** `Big Shoulders Display` (Autoalojada). Usada siempre en MAYÚSCULAS (`uppercase`), con un interlineado muy ajustado (`leading-[0.85]`) y tracking negativo (`tracking-tighter`) para lograr el efecto "Statement" y pantalla LED.
+- **Cuerpo de texto / Interfaz:** `Geist` (Autoalojada). Neutral, legible, aporta seriedad.
 
-## 2. Tipografía
-* **Display / Headlines:** `Big Shoulders Display` (Condensada, arquitectónica, estética LED de escenario).
-* **Body / UI:** `Geist` (Limpia, neutra, altamente legible en móvil).
+## 2. Paleta de Colores
+- **Noche / Club (Fondo principal y Navbar):** `#0B0F1A` (Off-black azulado).
+- **Foreground (Texto principal):** `#F8FAFC` (Blanco roto).
+- **Accent (Acento):** `#9D84D6` (Violeta desaturado, extraído de la luz fotográfica de la sala).
+- **Puente Ámbar:** `#F59E0B` (Usado durante la transición de scroll).
+- **Tramo de Día:** `#E1E7DE` (Verde cálido desaturado, luz natural).
 
-## 3. Paleta de Color (Deep Dark Mode)
-* **Background Base (Off-black):** `#0B0F1A` (Fondo negro-azulado extraído de retrato)
-* **Foreground (Texto):** `#F3F4F6` (Blanco roto para evitar fatiga visual)
-* **Accent (Violeta de Club):** `#7C5DA1` (Luz de club, utilizado escasamente para CTAs/highlights)
-* **Day (Verde Cálido):** `#6B7A60` (Luz natural para la sección "La Penúltima")
-* **Bridge (Ámbar):** `#D97941` (Luz de foco cálida para transiciones)
+## 3. Escala y Espaciados (Macro-whitespace)
+- En Next.js / Tailwind se aplica el multiplicador base de `4px`.
+- **Secciones:** `py-24` (96px) en móvil y `py-40` (160px) en escritorio.
+- **Bordes:** Uso de radios masivos como `rounded-[2rem]` y `rounded-[2.5rem]`.
 
-## 4. Componentes Firma (The Variation Engine)
-1. **Wordmark LED:** Revelado por máscara de la palabra BELTRY.
-2. **Tarjeta de Lanzamiento:** Doble bisel para el último lanzamiento (y formulario de contratación).
-3. **Rejilla Asimétrica:** Rejilla diagonal (diagonal staggered) de clips verticales.
-4. **Tira Editorial:** Métricas a gran escala (TikTok, Instagram) en una sola tira.
+## 4. Componentes Firma
+- **Double-Bezel Card:** Usado en el reproductor de "La Penúltima" y el Formulario. Consiste en un anillo exterior semi-transparente y un contenedor interior opaco con radio ajustado matemáticamente.
+- **Wordmark Gigante:** En el Hero, la palabra BELTRY ocupa el máximo ancho posible sin desbordar.
+- **Tira de Métricas:** Valores enormes de estadísticas de TikTok e IG sin tarjetas, flotando en el espacio asimétrico.
 
-## 5. Reglas Duras
-* **Botones/CTAs:** Texto en una sola línea, alto contraste, feedback de escala (`scale-[0.98]`). Un único intento de CTA por pantalla ("Contratar").
-* **Eyebrows:** Máximo 1 cada 3 secciones. Cero guiones largos.
-* **Border Radius:** `rounded-none` o máximo `rounded-sm` para un *look* más serio.
-* **Layouts:** Mínimo 4 familias distintas de layout a lo largo de las 6 secciones. Nunca 3 alternancias repetidas de izquierda/derecha.
+## 5. Botones y Controles
+- **Primario (CTA):** Botones estilo píldora (`rounded-full`), con padding generoso (`px-8 py-4`), y una física de botón magnético (el icono interior se desplaza al hacer hover mientras el botón hace `scale-[0.98]`).
+- **Secundario:** Enlaces de texto con subrayado en el borde inferior (`border-b`) y flecha que se desliza al hover.
