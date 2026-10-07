@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Big_Shoulders_Display, Geist } from "next/font/google";
+import { Bebas_Neue, Geist } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 
-const bigShoulders = Big_Shoulders_Display({
+const bebasNeue = Bebas_Neue({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-big-shoulders",
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -51,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${bigShoulders.variable} ${geistSans.variable}`}>
+    <html lang="es" className={`${bebasNeue.variable} ${geistSans.variable}`}>
       <body className="bg-[var(--color-base)] text-[var(--color-foreground)] min-h-[100dvh] flex flex-col antialiased">
         {children}
       </body>
