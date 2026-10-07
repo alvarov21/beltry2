@@ -7,7 +7,7 @@ export default function Highlights() {
         <span className="font-display font-semibold text-xs tracking-widest uppercase text-cream-45 mb-4">
           Lo más destacado
         </span>
-        <h2 className="font-display font-extrabold text-[60px] leading-[60px] tracking-[-1.5px] text-white mb-4">
+        <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-[60px] md:leading-[60px] tracking-[-1.5px] text-white mb-4">
           Highlights
         </h2>
         <p className="font-sans text-lg text-cream/80 max-w-2xl">

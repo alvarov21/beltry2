@@ -41,24 +41,26 @@ ${formData.mensaje}
 
   return (
     <section id="booking" className="py-24 md:py-[128px] px-5 md:px-8 w-full flex flex-col items-center">
-      {/* 1. Ticket interactivo como cabecera */}
-      <div className="mb-16 md:mb-20 flex flex-col items-center w-full pointer-events-auto group">
-        <button 
-          onClick={handleTicketClick}
-          className="hidden sm:block scale-[0.8] md:scale-100 origin-center transition-transform duration-500 hover:scale-[1.02] active:scale-[0.98] focus:outline-none"
-          aria-label="Descargar presskit"
-          type="button"
-        >
-          <AdmitOneTicket 
-            tilt={true} 
-            name={content.identity.name}
-            presenter="Urbano / Reggaeton"
-            event="Contratación"
-            venue="España y LATAM"
-            dates="Tour 2026"
-          />
-        </button>
-        <span className="hidden sm:block mt-6 text-sm font-medium text-cream-45 uppercase tracking-widest font-sans transition-colors group-hover:text-white pointer-events-none">
+      {/* 1. Ticket interactivo como cabecera (Adaptado a Móvil y Desktop) */}
+      <div className="mb-10 sm:mb-16 md:mb-20 flex flex-col items-center w-full pointer-events-auto group">
+        <div className="flex items-center justify-center w-full py-2 min-h-[140px] min-[400px]:min-h-[180px] sm:min-h-[220px]">
+          <button 
+            onClick={handleTicketClick}
+            className="scale-[0.55] min-[400px]:scale-[0.7] sm:scale-[0.85] md:scale-100 origin-center transition-transform duration-500 hover:scale-[0.58] min-[400px]:hover:scale-[0.73] sm:hover:scale-[0.88] md:hover:scale-[1.02] active:scale-[0.96] focus:outline-none"
+            aria-label="Descargar presskit"
+            type="button"
+          >
+            <AdmitOneTicket 
+              tilt={true} 
+              name={content.identity.name}
+              presenter="Urbano / Reggaeton"
+              event="Contratación"
+              venue="España y LATAM"
+              dates="Tour 2026"
+            />
+          </button>
+        </div>
+        <span className="mt-1 sm:mt-4 text-xs sm:text-sm font-medium text-cream-45 uppercase tracking-widest font-sans transition-colors group-hover:text-white pointer-events-none text-center">
           Click para descargar presskit
         </span>
       </div>
@@ -73,7 +75,7 @@ ${formData.mensaje}
           <p className="font-sans text-sm text-cream-45">Sala, festival o evento privado. Cuéntame la fecha y montamos la sesión.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-6 w-full p-8 md:p-12 bg-ink-2 border border-cream-12 rounded-[2rem] shadow-2xl">
+        <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-6 w-full p-5 sm:p-8 md:p-12 bg-ink-2 border border-cream-12 rounded-[2rem] shadow-2xl">
           <div className="text-center mb-4 hidden sm:block">
             <p className="font-sans text-base text-cream-45">Completa los detalles de tu evento y montamos la sesión.</p>
           </div>
