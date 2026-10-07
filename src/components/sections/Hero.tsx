@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { content } from "@/app/content";
@@ -44,11 +45,15 @@ export default function Hero() {
 
   return (
     <section ref={container} className="relative w-full h-[100svh] min-h-[640px] flex items-center justify-center overflow-hidden">
-      {/* 1. Fondo fotográfico */}
+      {/* 1. Fondo fotográfico optimizado para LCP */}
       <div className="absolute inset-0 z-0 bg-ink">
-        <div 
-          className="w-full h-full bg-cover bg-no-repeat"
-          style={{ backgroundImage: 'url("/assets/hero-bg.png")', backgroundPosition: 'center 40%' }}
+        <Image 
+          src="/assets/hero-bg.png"
+          alt="Beltry Hero Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_40%]"
         />
       </div>
 

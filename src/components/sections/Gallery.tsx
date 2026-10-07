@@ -53,10 +53,12 @@ export default function Gallery() {
             className="relative aspect-[4/5] rounded-[26px] overflow-hidden cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
           >
             <div className="absolute inset-0 bg-ink-2 animate-pulse -z-10" />
-            <img 
+            <Image 
               src={img.src} 
               alt={img.alt}
-              className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+              fill
+              sizes="(max-width: 768px) 100vw, 25vw"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
             />
             {/* Degradado inferior base */}
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent pointer-events-none" />

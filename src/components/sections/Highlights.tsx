@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { content } from "@/app/content";
 
 export default function Highlights() {
@@ -26,10 +27,13 @@ export default function Highlights() {
               {...props}
               className={`liquid-border block relative rounded-[28px] bg-ink-2 p-6 min-h-[250px] overflow-hidden group ${item.url ? 'cursor-pointer hover:-translate-y-1 transition-transform duration-300' : ''}`}
             >
-              {/* Fondo de imagen a sangre - PENDIENTE: Usar next/image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-500"
-                style={{ backgroundImage: `url(${item.image})` }}
+              {/* Imagen optimizada a sangre */}
+              <Image 
+                src={item.image}
+                alt={item.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
               />
               {/* Degradado oscuro para legibilidad */}
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
