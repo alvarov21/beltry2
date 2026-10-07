@@ -10,7 +10,7 @@ export default function About() {
           {/* Spotlight Glow de fondo */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[100px] pointer-events-none -z-10" />
           
-          <div className="relative w-full max-w-md aspect-square rounded-full overflow-hidden shadow-[0_0_60px_-15px_rgba(255,30,60,0.3)]">
+          <div className="relative w-full max-w-md aspect-square rounded-full overflow-hidden shadow-[0_0_60px_-15px_rgba(255,36,82,0.3)]">
             <div className="absolute inset-0 bg-ink-2 animate-pulse -z-10" />
             <img 
               src="/assets/about.jpg" 

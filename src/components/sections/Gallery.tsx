@@ -66,7 +66,7 @@ export default function Gallery() {
             
             {/* Spotlight inferior en hover */}
             <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none">
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 120%, rgba(255,30,60,0.45), transparent 60%)' }} />
+              <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 120%, rgba(255,36,82,0.45), transparent 60%)' }} />
             </div>
           </figure>
         ))}

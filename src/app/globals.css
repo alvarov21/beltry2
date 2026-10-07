@@ -6,7 +6,7 @@
   --color-cream: #f3ece4;
   --color-cream-45: #f3ece473;
   --color-cream-12: #f3ece41f;
-  --color-accent: #ff1e3c;
+  --color-accent: #ff2452;
   --color-deepred: #3d0b12;
   
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -15,10 +15,10 @@
 
 @layer utilities {
   .bg-iridescent {
-    background-image: linear-gradient(120deg, #ff1e3c, #ff5630 50%, #ff8a3d);
+    background-image: linear-gradient(120deg, #ff2452, #ff5630 50%, #ff8a3d);
   }
   .text-gradient-iridescent {
-    background-image: linear-gradient(120deg, #ff1e3c, #ff5630 50%, #ff8a3d);
+    background-image: linear-gradient(120deg, #ff2452, #ff5630 50%, #ff8a3d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -32,7 +32,7 @@
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(120deg, #ff1e3c, #ff5630 50%, #ff8a3d);
+    background: linear-gradient(120deg, #ff2452, #ff5630 50%, #ff8a3d);
     z-index: -1;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;

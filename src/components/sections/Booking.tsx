@@ -143,7 +143,7 @@ ${formData.mensaje}
               <textarea required name="mensaje" placeholder="Cuéntame los detalles: horario, aforo, presupuesto..." rows={4} onChange={handleChange} className="w-full rounded-2xl border border-cream-12 bg-transparent px-4 py-3.5 text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
             </div>
             
-            <button type="submit" className="w-full bg-accent text-white font-sans text-[16px] font-bold px-7 py-4 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,30,60,0.4)] mt-4">
+            <button type="submit" className="w-full bg-accent text-white font-sans text-[16px] font-bold px-7 py-4 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] mt-4">
               Enviar solicitud
             </button>
             <span className="text-xs text-cream-45 text-center mt-2">
