@@ -151,11 +151,9 @@ ${formData.mensaje}
             <textarea required name="mensaje" placeholder="Aforo, horario, tipo de público, presupuesto…" rows={4} onChange={handleChange} className="w-full rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
           </div>
           
-          {submitted && (
-            <div className="p-4 rounded-xl bg-accent/20 border border-accent/40 text-white text-center text-sm font-sans">
-              ¡Recibido! Te respondemos lo antes posible para cerrar la fecha.
-            </div>
-          )}
+          <p className={submitted ? "p-4 rounded-xl bg-accent/20 border border-accent/40 text-white text-center text-sm font-sans" : "hidden"}>
+            ¡Recibido! Te respondemos lo antes posible para cerrar la fecha.
+          </p>
 
           <button type="submit" className="w-full bg-accent text-white font-sans text-base font-bold px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] mt-2 cursor-pointer">
             Enviar solicitud
