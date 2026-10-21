@@ -48,12 +48,12 @@ export default function Hero() {
       {/* 1. Fondo fotográfico optimizado para LCP */}
       <div className="absolute inset-0 z-0 bg-ink">
         <Image 
-          src="/assets/hero-bg.png"
+          src="/assets/hero-bg.jpg"
           alt="Beltry Hero Background"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_40%]"
+          className="object-cover object-center"
         />
       </div>
 
