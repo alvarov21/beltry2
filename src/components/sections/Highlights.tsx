@@ -3,15 +3,15 @@ import { content } from "@/app/content";
 
 export default function Highlights() {
   return (
-    <section id="highlights" className="py-24 md:py-[128px] px-5 md:px-8 max-w-6xl mx-auto">
-      <div className="flex flex-col items-center text-center md:items-start md:text-left mb-12">
-        <span className="font-display font-semibold text-xs tracking-widest uppercase text-cream-45 mb-4">
+    <section id="highlights" className="py-16 md:py-[128px] px-4 sm:px-6 md:px-8 max-w-6xl mx-auto">
+      <div className="flex flex-col items-center text-center md:items-start md:text-left mb-10 md:mb-12 px-2">
+        <span className="font-display font-semibold text-xs tracking-widest uppercase text-cream-45 mb-3 sm:mb-4">
           Lo más destacado
         </span>
-        <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-[60px] md:leading-[60px] tracking-[-1.5px] text-white mb-4">
+        <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-[60px] md:leading-[60px] tracking-tight text-white mb-3 sm:mb-4">
           Highlights
         </h2>
-        <p className="font-sans text-lg text-cream/80 max-w-2xl">
+        <p className="font-sans text-base sm:text-lg text-cream/80 max-w-2xl">
           Últimos lanzamientos, sesiones en directo y crecimiento orgánico.
         </p>
       </div>

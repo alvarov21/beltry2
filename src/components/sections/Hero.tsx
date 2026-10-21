@@ -44,7 +44,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={container} className="relative w-full h-[100svh] min-h-[640px] flex items-center justify-center overflow-hidden">
+    <section ref={container} className="relative w-full h-[100svh] min-h-[560px] flex items-center justify-center overflow-hidden">
       {/* 1. Fondo fotográfico optimizado para LCP */}
       <div className="absolute inset-0 z-0 bg-ink">
         <Image 
@@ -53,7 +53,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[center_35%]"
         />
       </div>
 
@@ -82,15 +82,15 @@ export default function Hero() {
       </div>
 
       {/* 6. Contenido */}
-      <div ref={textRef} className="relative z-20 flex flex-col items-center text-center px-5">
-        <p className="font-display font-semibold text-[12px] md:text-[16px] uppercase tracking-[0.3em] md:tracking-[0.45em] text-cream-45 mb-4">
+      <div ref={textRef} className="relative z-20 flex flex-col items-center text-center px-4 sm:px-5 w-full max-w-4xl mx-auto">
+        <p className="font-display font-semibold text-[11px] sm:text-[13px] md:text-[16px] uppercase tracking-[0.25em] sm:tracking-[0.35em] md:tracking-[0.45em] text-cream-45 mb-3 sm:mb-4">
           {content.identity.tagline}
         </p>
         <h1 className="sr-only">{content.identity.name} - {content.identity.tagline}</h1>
-        <div className="font-display font-extrabold text-white uppercase tracking-tighter leading-none mb-6" style={{ fontSize: "clamp(3rem, 18vw, 640px)" }}>
+        <div className="font-display font-extrabold text-white uppercase tracking-tighter leading-none mb-4 sm:mb-6 select-none" style={{ fontSize: "clamp(2.5rem, 15vw, 640px)" }}>
           {content.identity.name}
         </div>
-        <p className="font-sans text-lg md:text-xl text-cream/80 max-w-md font-medium">
+        <p className="font-sans text-base sm:text-lg md:text-xl text-cream/80 max-w-md font-medium px-2">
           {content.identity.heroSubtitle}
         </p>
       </div>

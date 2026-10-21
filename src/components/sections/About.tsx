@@ -33,14 +33,14 @@ export default function About() {
             {content.identity.bio}
           </p>
 
-          <blockquote className="mt-10 relative max-w-xl">
-            <span className="absolute -top-6 -left-8 text-[80px] text-accent font-display font-black leading-none opacity-80">
+          <blockquote className="mt-8 sm:mt-10 relative max-w-xl px-2 sm:px-6 w-full">
+            <span className="absolute -top-6 left-0 sm:-left-6 text-[56px] sm:text-[80px] text-accent font-display font-black leading-none opacity-80 pointer-events-none select-none">
               &ldquo;
             </span>
-            <p className="font-display font-semibold text-2xl text-white relative z-10">
+            <p className="font-display font-semibold text-lg sm:text-2xl text-white relative z-10">
               {content.identity.quote}
             </p>
-            <span className="absolute -bottom-10 right-0 text-[80px] text-accent font-display font-black leading-none opacity-80">
+            <span className="absolute -bottom-8 sm:-bottom-10 right-0 sm:-right-4 text-[56px] sm:text-[80px] text-accent font-display font-black leading-none opacity-80 pointer-events-none select-none">
               &rdquo;
             </span>
           </blockquote>

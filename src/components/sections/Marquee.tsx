@@ -38,9 +38,9 @@ export default function Marquee() {
       </div>
       
       <div className="relative w-full max-w-full overflow-hidden flex">
-        {/* Fundidos laterales */}
-        <div className="absolute inset-y-0 left-0 w-20 sm:w-40 bg-gradient-to-r from-ink-2 to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-20 sm:w-40 bg-gradient-to-l from-ink-2 to-transparent z-10" />
+        {/* Fundidos laterales responsivos */}
+        <div className="absolute inset-y-0 left-0 w-10 sm:w-24 md:w-40 bg-gradient-to-r from-ink-2 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-10 sm:w-24 md:w-40 bg-gradient-to-l from-ink-2 to-transparent z-10 pointer-events-none" />
 
         <div ref={scrollerRef} className="flex whitespace-nowrap will-change-transform">
           <div className="flex items-center gap-8 px-4">

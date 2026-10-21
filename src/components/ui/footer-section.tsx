@@ -56,7 +56,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="md:rounded-t-[3rem] relative w-full flex flex-col items-center justify-center rounded-t-4xl border-t border-cream-12 bg-ink-2 bg-[radial-gradient(35%_128px_at_50%_0%,rgba(255,36,82,0.1),transparent)] px-6 py-12 lg:py-16 overflow-hidden">
+    <footer className="md:rounded-t-[3rem] relative w-full flex flex-col items-center justify-center rounded-t-3xl sm:rounded-t-4xl border-t border-cream-12 bg-ink-2 bg-[radial-gradient(35%_128px_at_50%_0%,rgba(255,36,82,0.1),transparent)] px-4 sm:px-6 py-10 lg:py-16 overflow-hidden">
       <div className="bg-accent/40 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
       <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8 max-w-6xl mx-auto z-10 relative">

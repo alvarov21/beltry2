@@ -33,17 +33,17 @@ export default function Gallery() {
   }, [isOpen]);
 
   return (
-    <section id="galeria" className="py-24 md:py-[128px] px-5 md:px-8 max-w-6xl mx-auto">
-      <div className="flex flex-col items-center text-center md:items-start md:text-left mb-12">
-        <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-[60px] leading-[1.1] tracking-[-1.5px] text-white mb-4">
+    <section id="galeria" className="py-16 md:py-[128px] px-4 sm:px-6 md:px-8 max-w-6xl mx-auto">
+      <div className="flex flex-col items-center text-center md:items-start md:text-left mb-10 md:mb-12 px-2">
+        <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-[60px] leading-[1.1] tracking-tight text-white mb-3 sm:mb-4">
           En directo
         </h2>
-        <p className="font-sans text-lg text-cream/80 max-w-2xl">
+        <p className="font-sans text-base sm:text-lg text-cream/80 max-w-2xl">
           Momentos de cabina, escenario y público.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         {galleryImages.map((img, idx) => (
           <figure 
             key={idx}

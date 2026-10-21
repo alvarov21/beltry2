@@ -2,14 +2,14 @@ import { content } from "@/app/content";
 
 export default function Music() {
   return (
-    <section id="musica" className="bg-ink-2 border-y border-cream-12 py-24 md:py-[128px]">
-      <div className="max-w-6xl mx-auto px-5 md:px-8">
+    <section id="musica" className="bg-ink-2 border-y border-cream-12 py-16 md:py-[128px] overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         
-        <div className="flex flex-col mb-12 items-center text-center relative">
-          <span className="font-display font-semibold text-xs tracking-widest uppercase text-accent mb-4">
+        <div className="flex flex-col mb-10 md:mb-12 items-center text-center relative px-2">
+          <span className="font-display font-semibold text-xs tracking-widest uppercase text-accent mb-3 sm:mb-4">
             Música & Sets
           </span>
-          <h2 className="font-display font-extrabold text-[36px] sm:text-[48px] md:text-[60px] lg:text-[68px] leading-[1.1] tracking-tight text-white md:whitespace-nowrap">
+          <h2 className="font-display font-extrabold text-[28px] sm:text-[40px] md:text-[54px] lg:text-[64px] leading-[1.15] md:leading-[1.1] tracking-tight text-white md:whitespace-nowrap">
             Escucha el <span className="text-accent">sonido</span> que funciona
           </h2>
         </div>
