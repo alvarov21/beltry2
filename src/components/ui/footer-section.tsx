@@ -69,8 +69,13 @@ export function Footer() {
           </p>
           <div className="mt-8 flex flex-col text-xs text-cream/30 gap-1">
             <p>© 2026 {content.identity.name}. Todos los derechos reservados.</p>
-            <a href="https://potenciatunegocio.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-              Web por Potencia tu Negocio
+            <a 
+              href="https://potenciatunegocio.eu" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-white transition-colors"
+            >
+              Web hecha con Potencia tu Negocio
             </a>
           </div>
         </AnimatedContainer>

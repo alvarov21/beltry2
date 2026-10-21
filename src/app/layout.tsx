@@ -44,6 +44,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${bricolage.variable}`}>
+      <head>
+        <link rel="dns-prefetch" href="https://potenciatunegocio.eu" />
+        <link rel="preconnect" href="https://potenciatunegocio.eu" crossOrigin="" />
+      </head>
       <body className="antialiased selection:bg-accent selection:text-white font-sans">
         <div 
           className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay animate-grain" 
