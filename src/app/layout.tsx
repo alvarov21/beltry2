@@ -20,15 +20,17 @@ const bricolage = Bricolage_Grotesque({
   weight: ["400", "600", "700", "800"],
 });
 
+const siteTitle = "Beltry — DJ urbano y reggaeton en Barcelona | Booking";
+const siteDescription = "Beltry, DJ urbano de Barcelona: lo que suena hoy y los temazos de siempre en una misma sesión. Booking para salas, festivales y eventos privados.";
+
 export const metadata: Metadata = {
-  title: "Beltry — DJ Urbano en Barcelona",
-  description: "Web oficial de Beltry, DJ urbano de Barcelona. Booking para salas, festivales y eventos privados. Escucha La Penúltima Vol.1 y su live set en Millennium.",
-  keywords: ["DJ urbano Barcelona", "booking DJ Barcelona", "DJ reggaeton Barcelona", "mix urbano 2026", "Beltry"],
+  title: siteTitle,
+  description: siteDescription,
   openGraph: {
     locale: "es_ES",
     type: "website",
-    title: "Beltry — DJ Urbano en Barcelona",
-    description: "Web oficial de Beltry, DJ urbano de Barcelona. Booking para salas, festivales y eventos privados.",
+    title: siteTitle,
+    description: siteDescription,
     images: [
       {
         url: "/assets/og-image.jpg",
@@ -40,6 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
   },
 };
 

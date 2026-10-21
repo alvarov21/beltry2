@@ -9,10 +9,10 @@ export default function Highlights() {
           Lo más destacado
         </span>
         <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-[60px] md:leading-[60px] tracking-tight text-white mb-3 sm:mb-4">
-          Highlights
+          Lo último de Beltry
         </h2>
         <p className="font-sans text-base sm:text-lg text-cream/80 max-w-2xl">
-          Últimos lanzamientos, sesiones en directo y crecimiento orgánico.
+          Lanzamientos, directos y una comunidad que no para de crecer.
         </p>
       </div>
 

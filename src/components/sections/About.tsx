@@ -14,7 +14,7 @@ export default function About() {
             <div className="absolute inset-0 bg-ink-2 animate-pulse -z-10" />
             <Image 
               src="/assets/about.jpg" 
-              alt="Beltry"
+              alt="Retrato de Beltry, DJ urbano de Barcelona"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-[center_15%]"
@@ -24,14 +24,19 @@ export default function About() {
 
         <div className="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left mt-6 lg:mt-0">
           <span className="font-display font-semibold text-xs tracking-widest uppercase text-accent mb-4">
-            Sobre Mí
+            Quién es Beltry
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-[48px] md:leading-[50.4px] tracking-[-1.2px] text-white mb-6">
-            La energía de la calle directo al <span className="text-accent">club</span>.
+            Lo que suena hoy y lo que siempre ha <span className="text-accent">sonado</span>.
           </h2>
-          <p className="font-sans text-lg leading-relaxed text-cream/80 max-w-xl">
-            {content.identity.bio}
-          </p>
+          <div className="space-y-4 max-w-xl font-sans text-base sm:text-lg leading-relaxed text-cream/80">
+            <p>
+              {content.identity.bio1}
+            </p>
+            <p>
+              {content.identity.bio2}
+            </p>
+          </div>
 
           <blockquote className="mt-8 sm:mt-10 relative max-w-xl px-2 sm:px-6 w-full">
             <span className="absolute -top-6 left-0 sm:-left-6 text-[56px] sm:text-[80px] text-accent font-display font-black leading-none opacity-80 pointer-events-none select-none">

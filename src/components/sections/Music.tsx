@@ -10,7 +10,7 @@ export default function Music() {
             Música & Sets
           </span>
           <h2 className="font-display font-extrabold text-[28px] sm:text-[40px] md:text-[54px] lg:text-[64px] leading-[1.15] md:leading-[1.1] tracking-tight text-white md:whitespace-nowrap">
-            Escucha el <span className="text-accent">sonido</span> que funciona
+            Dale al play y <span className="text-accent">siente</span> la pista
           </h2>
         </div>
 

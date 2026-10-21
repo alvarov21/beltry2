@@ -39,7 +39,7 @@ export default function Gallery() {
           En directo
         </h2>
         <p className="font-sans text-base sm:text-lg text-cream/80 max-w-2xl">
-          Momentos de cabina, escenario y público.
+          Mirar a los ojos, leer la pista, compartir la vibra.
         </p>
       </div>
 

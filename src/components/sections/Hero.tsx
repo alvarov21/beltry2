@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { content } from "@/app/content";
@@ -49,7 +50,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 bg-ink">
         <Image 
           src="/assets/hero-bg.jpg"
-          alt="Beltry Hero Background"
+          alt="Beltry pinchando en cabina ante el público"
           fill
           priority
           sizes="100vw"
@@ -90,13 +91,29 @@ export default function Hero() {
         <div className="font-display font-extrabold text-white uppercase tracking-tighter leading-none mb-4 sm:mb-6 select-none" style={{ fontSize: "clamp(2.5rem, 15vw, 640px)" }}>
           {content.identity.name}
         </div>
-        <p className="font-sans text-base sm:text-lg md:text-xl text-cream/80 max-w-md font-medium px-2">
+        <p className="font-sans text-base sm:text-lg md:text-xl text-cream/80 max-w-md font-medium px-2 mb-6 sm:mb-8">
           {content.identity.heroSubtitle}
         </p>
+
+        {/* Botones de acción */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <Link 
+            href="#musica"
+            className="bg-accent text-white text-[14px] font-semibold px-6 py-2.5 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] inline-flex items-center justify-center"
+          >
+            Escuchar La Penúltima Vol.1
+          </Link>
+          <Link 
+            href="#booking"
+            className="border border-cream-12 hover:border-cream/40 bg-transparent text-white text-[14px] font-semibold px-6 py-2.5 rounded-full hover:bg-white/5 transition-colors inline-flex items-center justify-center"
+          >
+            Contratar
+          </Link>
+        </div>
       </div>
 
       {/* 7. Indicador scroll */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex justify-center">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex justify-center">
         <div className="w-[24px] h-[40px] rounded-full border border-cream/40 flex justify-center p-1">
           <div className="w-1.5 h-1.5 rounded-full bg-cream animate-cue" />
         </div>

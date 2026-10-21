@@ -38,10 +38,11 @@ export function Footer() {
     {
       label: 'Navegación',
       links: [
-        { title: 'Sobre mí', href: '#about' },
-        { title: 'Highlights', href: '#highlights' },
-        { title: 'Música', href: '#music' },
+        { title: 'Bio', href: '#sobre-mi' },
+        { title: 'Lo último', href: '#highlights' },
+        { title: 'Música', href: '#musica' },
         { title: 'Galería', href: '#galeria' },
+        { title: 'Booking', href: '#booking' },
       ],
     },
     {

@@ -27,8 +27,8 @@ export default function Nav() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-[14px] text-cream-45">
-          <Link href="#sobre-mi" className="hover:text-cream transition-colors">Sobre mí</Link>
-          <Link href="#highlights" className="hover:text-cream transition-colors">Highlights</Link>
+          <Link href="#sobre-mi" className="hover:text-cream transition-colors">Bio</Link>
+          <Link href="#highlights" className="hover:text-cream transition-colors">Lo último</Link>
           <Link href="#musica" className="hover:text-cream transition-colors">Música</Link>
           <Link href="#galeria" className="hover:text-cream transition-colors">Galería</Link>
         </div>

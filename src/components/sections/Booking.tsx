@@ -9,6 +9,7 @@ export default function Booking() {
     nombre: "", email: "", telefono: "", tipo: "Sala/Club",
     fecha: "", ciudad: "", horaInicio: "", horaFin: "", mensaje: ""
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const [ticketWidth, setTicketWidth] = useState(320);
 
@@ -49,6 +50,7 @@ ${formData.mensaje}
 
     const mailtoUrl = `mailto:${content.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoUrl;
+    setSubmitted(true);
   };
 
   const handleTicketClick = () => {
@@ -68,7 +70,7 @@ ${formData.mensaje}
           Booking
         </h2>
         <p className="font-sans text-sm sm:text-base text-cream-45">
-          Sala, festival o evento privado. Cuéntame la fecha y montamos la sesión.
+          Sala, festival o evento privado. Cuéntanos la fecha y la ciudad, y montamos una noche que la gente recuerde.
         </p>
       </div>
 
@@ -93,7 +95,7 @@ ${formData.mensaje}
           </div>
         </button>
         <span className="mt-4 text-xs sm:text-sm font-medium text-cream-45 uppercase tracking-widest font-sans transition-colors group-hover:text-white pointer-events-none text-center">
-          Click para descargar presskit
+          Toca para descargar el presskit
         </span>
       </div>
 
@@ -107,7 +109,7 @@ ${formData.mensaje}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="flex flex-col gap-2">
               <label className="text-xs text-cream-45 font-sans">Nombre / sala</label>
-              <input required type="text" name="nombre" placeholder="Tu nombre o sala" onChange={handleChange} className="w-full rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[46px]" />
+              <input required type="text" name="nombre" placeholder="Tu nombre o el de la sala" onChange={handleChange} className="w-full rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[46px]" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="text-xs text-cream-45 font-sans">Email</label>
@@ -132,7 +134,7 @@ ${formData.mensaje}
             </div>
             <div className="flex flex-col gap-2">
               <label className="text-xs text-cream-45 font-sans">Ciudad</label>
-              <input required type="text" name="ciudad" placeholder="Opcional" onChange={handleChange} className="w-full rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[46px]" />
+              <input required type="text" name="ciudad" placeholder="Ej. Barcelona" onChange={handleChange} className="w-full rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[46px]" />
             </div>
             <div className="flex flex-col gap-2">
               <label className="text-xs text-cream-45 font-sans">Hora de inicio</label>
@@ -146,9 +148,15 @@ ${formData.mensaje}
           
           <div className="flex flex-col gap-2 mt-1">
             <label className="text-xs text-cream-45 font-sans">Mensaje</label>
-            <textarea required name="mensaje" placeholder="Cuéntame los detalles: horario, aforo, presupuesto..." rows={4} onChange={handleChange} className="w-full rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
+            <textarea required name="mensaje" placeholder="Aforo, horario, tipo de público, presupuesto…" rows={4} onChange={handleChange} className="w-full rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
           </div>
           
+          {submitted && (
+            <div className="p-4 rounded-xl bg-accent/20 border border-accent/40 text-white text-center text-sm font-sans">
+              ¡Recibido! Te respondemos lo antes posible para cerrar la fecha.
+            </div>
+          )}
+
           <button type="submit" className="w-full bg-accent text-white font-sans text-base font-bold px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] mt-2 cursor-pointer">
             Enviar solicitud
           </button>

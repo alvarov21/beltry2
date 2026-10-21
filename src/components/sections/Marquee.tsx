@@ -33,7 +33,7 @@ export default function Marquee() {
     <section className="bg-ink-2 border-y border-cream-12 py-16 sm:py-20 relative overflow-hidden flex flex-col items-center">
       <div className="text-center mb-8">
         <span className="font-display font-semibold text-xs tracking-widest uppercase text-cream-45">
-          Cabinas & Escenarios
+          Cabinas donde ya ha sonado
         </span>
       </div>
       
