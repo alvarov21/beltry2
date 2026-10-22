@@ -49,7 +49,7 @@ export default function Hero() {
       {/* 1. Fondo fotográfico optimizado para LCP */}
       <div className="absolute inset-0 z-0 bg-ink">
         <Image 
-          src="/assets/hero-cover-4k.jpg"
+          src="/assets/hero-master.jpg"
           alt="Beltry con micrófono en cabina en directo"
           fill
           priority
