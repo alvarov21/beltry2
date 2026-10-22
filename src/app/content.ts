@@ -53,7 +53,6 @@ export const content = {
     "Shark",
     "Jowke",
     "CRVSH",
-    "Adicto Club",
     "Cocoa",
     "Bro Málaga"
   ],
