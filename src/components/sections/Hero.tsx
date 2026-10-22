@@ -49,10 +49,11 @@ export default function Hero() {
       {/* 1. Fondo fotográfico optimizado para LCP */}
       <div className="absolute inset-0 z-0 bg-ink">
         <Image 
-          src="/assets/hero-bg.jpg"
-          alt="Beltry pinchando en cabina ante el público"
+          src="/assets/hero-cover.jpg"
+          alt="Beltry con micrófono en cabina en directo"
           fill
           priority
+          quality={95}
           sizes="100vw"
           className="object-cover object-[center_35%]"
         />
