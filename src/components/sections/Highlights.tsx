@@ -25,7 +25,7 @@ export default function Highlights() {
             <CardTag 
               key={idx} 
               {...props}
-              className={`liquid-border block relative rounded-[28px] bg-ink-2 p-6 min-h-[250px] overflow-hidden group ${item.url ? 'cursor-pointer hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 ease-out will-change-transform' : ''}`}
+              className={`block relative rounded-[28px] bg-ink-2 p-6 min-h-[250px] overflow-hidden group border border-cream-12 [@media(hover:hover)]:hover:border-accent/60 [@media(hover:hover)]:hover:shadow-[0_0_30px_-5px_rgba(255,36,82,0.25)] ${item.url ? 'cursor-pointer [@media(hover:hover)]:hover:-translate-y-1.5 active:scale-[0.98] transition-all duration-300 ease-out will-change-transform' : ''}`}
             >
               {/* Imagen optimizada a sangre */}
               <Image 
@@ -33,10 +33,16 @@ export default function Highlights() {
                 alt={item.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500"
+                className="object-cover opacity-30 [@media(hover:hover)]:group-hover:opacity-45 transition-opacity duration-500"
               />
               {/* Degradado oscuro para legibilidad */}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent pointer-events-none" />
+
+              {/* Sombreado de color sutil que solo se activa al pasar el ratón en escritorio */}
+              <div 
+                className="absolute inset-0 opacity-0 transition-opacity duration-500 [@media(hover:hover)]:group-hover:opacity-100 pointer-events-none" 
+                style={{ background: 'radial-gradient(circle at 50% 100%, rgba(255,36,82,0.2), transparent 70%)' }} 
+              />
 
               <div className="relative z-10 h-full flex flex-col justify-end">
                 <span className="inline-block px-3 py-1 bg-ink/80 text-accent text-xs font-semibold uppercase tracking-widest rounded-full w-fit mb-3 border border-cream-12">

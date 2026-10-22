@@ -58,16 +58,16 @@ export default function Gallery() {
               alt={img.alt}
               fill
               sizes="(max-width: 768px) 100vw, 25vw"
-              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-106 will-change-transform"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:group-hover:scale-106 will-change-transform"
             />
             {/* Degradado inferior base */}
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent pointer-events-none" />
             
-            {/* Overlay de color en hover */}
-            <div className="absolute inset-0 bg-accent/0 mix-blend-color transition-all duration-500 group-hover:bg-accent/30 pointer-events-none" />
+            {/* Overlay de color en hover (solo en escritorio con ratón) */}
+            <div className="absolute inset-0 bg-accent/0 mix-blend-color transition-all duration-500 [@media(hover:hover)]:group-hover:bg-accent/30 pointer-events-none" />
             
-            {/* Spotlight inferior en hover */}
-            <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none">
+            {/* Spotlight inferior en hover (solo en escritorio con ratón) */}
+            <div className="absolute inset-0 opacity-0 transition-opacity duration-500 [@media(hover:hover)]:group-hover:opacity-100 pointer-events-none">
               <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 120%, rgba(255,36,82,0.45), transparent 60%)' }} />
             </div>
           </figure>

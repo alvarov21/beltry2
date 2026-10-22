@@ -28,23 +28,6 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .liquid-border {
-    position: relative;
-    border: none;
-  }
-  .liquid-border::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: linear-gradient(120deg, #ff2452, #ff5630 50%, #ff8a3d);
-    z-index: -1;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    padding: 1px;
-  }
 }
 
 @layer base {
