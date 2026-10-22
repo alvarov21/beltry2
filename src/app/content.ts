@@ -42,10 +42,10 @@ export const content = {
     tiktokVideo: "[PENDIENTE:ID_TIKTOK]"
   },
   gallery: [
-    { src: "/assets/gallery-1.jpg", alt: "Beltry en el escenario con llamaradas de fuego" },
+    { src: "/assets/gallery-4.jpg", alt: "Beltry desde la cabina frente al público" },
     { src: "/assets/gallery-2.jpg", alt: "Pantalla gigante con el nombre de Beltry" },
     { src: "/assets/gallery-3.jpg", alt: "Beltry en cabina bajo las luces del club" },
-    { src: "/assets/gallery-4.jpg", alt: "Beltry desde la cabina frente al público" },
+    { src: "/assets/gallery-1.jpg", alt: "Beltry en el escenario con llamaradas de fuego" },
   ],
   venues: [
     "Millennium",
