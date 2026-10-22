@@ -28,10 +28,10 @@ export const content = {
       image: "/assets/highlight-2.jpg"
     },
     {
-      type: "REDES",
-      title: "+158K en TikTok",
-      subtitle: "2,6 M de me gusta y subiendo",
-      url: "https://www.tiktok.com/@beltry_dj",
+      type: "CRVSH",
+      title: "DJ Residente",
+      subtitle: "Haciendo vibrar la pista en salas de todo el país",
+      url: "https://www.instagram.com/beltry_dj",
       image: "/assets/highlight-3.jpg"
     }
   ],

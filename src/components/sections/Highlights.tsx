@@ -12,7 +12,7 @@ export default function Highlights() {
           Lo último de Beltry
         </h2>
         <p className="font-sans text-base sm:text-lg text-cream/80 max-w-2xl">
-          Lanzamientos, directos y una comunidad que no para de crecer.
+          Lanzamientos, directos y residencias en cabina.
         </p>
       </div>
 
