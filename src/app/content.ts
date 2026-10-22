@@ -61,7 +61,7 @@ export const content = {
     email: "booking@beltry.com",
     phone: "+34 600 000 000",
     whatsapp: "https://wa.me/34600000000",
-    presskitUrl: "/assets/presskit-beltry.pdf"
+    presskitUrl: "/assets/presskit-beltry-2026.pdf"
   },
   socials: {
     tiktok: "https://tiktok.com/@beltry_dj",
