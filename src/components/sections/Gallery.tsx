@@ -59,7 +59,7 @@ export default function Gallery() {
               src={img.src} 
               alt={img.alt}
               fill
-              sizes="(max-width: 768px) 100vw, 25vw"
+              sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [@media(hover:hover)]:group-hover:scale-106 will-change-transform"
             />
             {/* Degradado inferior base */}
