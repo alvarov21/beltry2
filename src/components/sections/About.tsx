@@ -27,7 +27,7 @@ export default function About() {
             Quién es Beltry
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-[48px] md:leading-[50.4px] tracking-[-1.2px] text-white mb-6">
-            Lo que suena hoy y lo que siempre ha <span className="text-accent">sonado</span>.
+            Lo que él y la gente quieren que <span className="text-accent">suene</span>.
           </h2>
           <div className="space-y-4 max-w-xl font-sans text-base sm:text-lg leading-relaxed text-cream/80">
             <p>
