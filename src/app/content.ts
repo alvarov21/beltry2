@@ -42,7 +42,7 @@ export const content = {
     tiktokVideo: "[PENDIENTE:ID_TIKTOK]"
   },
   gallery: [
-    { src: "/assets/gallery-4.jpg", alt: "Beltry desde la cabina frente al público" },
+    { src: "/assets/hero-master.jpg", alt: "Beltry con micrófono en cabina en directo", position: "object-[center_28%]" },
     { src: "/assets/gallery-3.jpg", alt: "Beltry en cabina bajo las luces del club" },
     { src: "/assets/gallery-2.webp", alt: "Beltry pinchando en cabina con auriculares" },
     { src: "/assets/gallery-1.jpg", alt: "Beltry en el escenario con llamaradas de fuego" },
