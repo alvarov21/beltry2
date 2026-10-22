@@ -13,7 +13,7 @@ export default function About() {
           <div className="relative w-full max-w-xs sm:max-w-md aspect-square rounded-full overflow-hidden shadow-[0_0_60px_-15px_rgba(255,36,82,0.3)]">
             <div className="absolute inset-0 bg-ink-2 animate-pulse -z-10" />
             <Image 
-              src="/assets/about.jpg" 
+              src="/assets/about.webp" 
               alt="Retrato de Beltry, DJ urbano de Barcelona"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
