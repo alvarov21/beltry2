@@ -5,7 +5,8 @@ export default function Music() {
     <section id="musica" className="bg-ink-2 border-y border-cream-12 py-16 md:py-[128px] overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         
-        <div className="flex flex-col mb-10 md:mb-12 items-center text-center relative px-2">
+        {/* Cabecera centrada */}
+        <div className="flex flex-col mb-10 md:mb-14 items-center text-center relative px-2 w-full max-w-2xl mx-auto">
           <span className="font-display font-semibold text-xs tracking-widest uppercase text-accent mb-3 sm:mb-4">
             Música & Sets
           </span>
@@ -14,43 +15,47 @@ export default function Music() {
           </h2>
         </div>
 
-        <div className="relative max-w-4xl mx-auto flex flex-col gap-12 mb-16">
-          {/* Spotlight Glow de fondo */}
-          <div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/15 rounded-full blur-[120px] pointer-events-none -z-10" />
+        {/* Contenedor de vídeos centrado */}
+        <div className="relative w-full max-w-4xl mx-auto flex flex-col items-center gap-8 sm:gap-12 mb-12 sm:mb-16">
+          {/* Spotlight Glow perfectamente centrado */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] md:w-[800px] h-[320px] sm:h-[600px] md:h-[800px] bg-accent/15 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none -z-10" />
           
           {/* YouTube 1 */}
-          <div className="relative rounded-[28px] border border-accent/40 bg-ink/70 p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,36,82,0.15)] aspect-video">
-            <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
-            <iframe 
-              className="w-full h-full rounded-[20px]"
-              src={`https://www.youtube-nocookie.com/embed/${content.music.youtube1}?rel=0&color=white`}
-              title="YouTube video player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              allowFullScreen
-            />
+          <div className="w-full rounded-2xl sm:rounded-[28px] border border-accent/40 bg-ink/70 p-1.5 sm:p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,36,82,0.15)] overflow-hidden">
+            <div className="relative w-full aspect-video rounded-xl sm:rounded-[20px] overflow-hidden bg-black">
+              <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
+              <iframe 
+                className="w-full h-full border-0"
+                src={`https://www.youtube-nocookie.com/embed/${content.music.youtube1}?rel=0&color=white`}
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowFullScreen
+              />
+            </div>
           </div>
 
           {/* YouTube 2 */}
-          <div className="relative rounded-[28px] border border-accent/40 bg-ink/70 p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,36,82,0.15)] aspect-video">
-            <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
-            <iframe 
-              className="w-full h-full rounded-[20px]"
-              src={`https://www.youtube-nocookie.com/embed/${content.music.youtube2}?rel=0&color=white`}
-              title="YouTube video player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              allowFullScreen
-            />
+          <div className="w-full rounded-2xl sm:rounded-[28px] border border-accent/40 bg-ink/70 p-1.5 sm:p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,36,82,0.15)] overflow-hidden">
+            <div className="relative w-full aspect-video rounded-xl sm:rounded-[20px] overflow-hidden bg-black">
+              <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
+              <iframe 
+                className="w-full h-full border-0"
+                src={`https://www.youtube-nocookie.com/embed/${content.music.youtube2}?rel=0&color=white`}
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 items-center">
+        {/* Botones de acción centrados */}
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 items-center w-full max-w-xs sm:max-w-none mx-auto">
           <a 
             href={content.socials.youtube}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-accent text-white font-sans text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)]"
+            className="w-full sm:w-auto text-center bg-accent text-white font-sans text-[15px] sm:text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)]"
           >
             Ver en YouTube
           </a>
@@ -58,7 +63,7 @@ export default function Music() {
             href={content.socials.tiktok}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-transparent border border-cream-12 text-white font-sans text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-white/5 transition-colors"
+            className="w-full sm:w-auto text-center bg-transparent border border-cream-12 text-white font-sans text-[15px] sm:text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-white/5 transition-colors"
           >
             Ver en TikTok
           </a>

@@ -61,6 +61,29 @@
     width: 100%;
   }
 
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  select,
+  textarea {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  input[type="date"]::-webkit-date-and-time-value,
+  input[type="time"]::-webkit-date-and-time-value {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    min-height: 1.2em;
+    display: flex;
+    align-items: center;
+  }
+
   @keyframes shimmer { 
     0% { background-position: 0 center } 
     100% { background-position: 200% center } 
