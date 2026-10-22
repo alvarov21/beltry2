@@ -2054,7 +2054,7 @@ function TicketCard({
               },
               children: [
                 venue,
-                " \xB7 ",
+                dates ? " \xB7 " : "",
                 dates
               ]
             }
