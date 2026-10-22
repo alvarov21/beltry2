@@ -38,14 +38,14 @@ export default function About() {
             </p>
           </div>
 
-          <blockquote className="mt-8 sm:mt-10 relative max-w-xl px-2 sm:px-6 w-full">
-            <span className="absolute -top-6 left-0 sm:-left-6 text-[56px] sm:text-[80px] text-accent font-display font-black leading-none opacity-80 pointer-events-none select-none">
+          <blockquote className="mt-6 sm:mt-8 relative inline-block w-fit max-w-full px-5 sm:px-7 py-1">
+            <span className="absolute -top-3 sm:-top-4 left-0 sm:-left-1 text-[42px] sm:text-[56px] text-accent font-display font-black leading-none opacity-80 pointer-events-none select-none">
               &ldquo;
             </span>
-            <p className="font-display font-semibold text-lg sm:text-2xl text-white relative z-10">
+            <p className="font-display font-semibold text-lg sm:text-2xl text-white relative z-10 whitespace-nowrap">
               {content.identity.quote}
             </p>
-            <span className="absolute -bottom-8 sm:-bottom-10 right-0 sm:-right-4 text-[56px] sm:text-[80px] text-accent font-display font-black leading-none opacity-80 pointer-events-none select-none">
+            <span className="absolute -bottom-5 sm:-bottom-7 right-0 sm:-right-1 text-[42px] sm:text-[56px] text-accent font-display font-black leading-none opacity-80 pointer-events-none select-none">
               &rdquo;
             </span>
           </blockquote>
