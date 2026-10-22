@@ -32,7 +32,7 @@ export const content = {
       title: "DJ Residente",
       subtitle: "Haciendo vibrar la pista en salas de todo el país",
       url: "https://www.instagram.com/beltry_dj",
-      image: "/assets/highlight-3.jpg"
+      image: "/assets/highlight-3.webp"
     }
   ],
   music: {
