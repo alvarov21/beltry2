@@ -54,7 +54,8 @@ export const content = {
     "Jowke",
     "CRVSH",
     "Cocoa",
-    "Bro Málaga"
+    "Bro Málaga",
+    "Occo Sevilla"
   ],
   contact: {
     email: "booking@beltry.com",
