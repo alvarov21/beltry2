@@ -4,7 +4,7 @@
   --color-ink: #0a0506;
   --color-ink-2: #140a0c;
   --color-cream: #f3ece4;
-  --color-cream-45: #f3ece473;
+  --color-cream-45: rgba(243, 236, 228, 0.65);
   --color-cream-12: #f3ece41f;
   --color-accent: #ff2452;
   --color-deepred: #3d0b12;
@@ -35,6 +35,7 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     max-width: 100vw;
+    background-color: var(--color-ink);
   }
   body {
     background-color: var(--color-ink);

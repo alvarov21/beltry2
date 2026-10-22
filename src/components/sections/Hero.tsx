@@ -32,12 +32,12 @@ export default function Hero() {
       
       // Entrance animation
       gsap.from(textRef.current?.children || [], {
-        y: 35,
+        y: 25,
         opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-        delay: 0.15
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power2.out",
+        delay: 0.05
       });
     }, container);
 
@@ -79,10 +79,9 @@ export default function Hero() {
         <p className="font-display font-semibold text-[11px] sm:text-[13px] md:text-[16px] uppercase tracking-[0.25em] sm:tracking-[0.35em] md:tracking-[0.45em] text-cream-45 mb-3 sm:mb-4">
           {content.identity.tagline}
         </p>
-        <h1 className="sr-only">{content.identity.name} - {content.identity.tagline}</h1>
-        <div className="font-display font-extrabold text-white uppercase tracking-tighter leading-none mb-4 sm:mb-6 select-none" style={{ fontSize: "clamp(2.5rem, 15vw, 640px)" }}>
+        <h1 className="font-display font-extrabold text-white uppercase tracking-tighter leading-none mb-4 sm:mb-6 select-none" style={{ fontSize: "clamp(2.5rem, 15vw, 640px)" }}>
           {content.identity.name}
-        </div>
+        </h1>
         <p className="font-sans text-base sm:text-lg md:text-xl text-cream/80 max-w-md font-medium px-2 mb-6 sm:mb-8">
           {content.identity.heroSubtitle}
         </p>

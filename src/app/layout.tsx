@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Bricolage_Grotesque } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -8,16 +8,11 @@ export const viewport: Viewport = {
   themeColor: "#0a0506",
 };
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-bricolage",
   weight: ["400", "600", "700", "800"],
+  display: "swap",
 });
 
 const siteTitle = "Beltry — DJ urbano y reggaeton en Barcelona | Booking";
@@ -54,12 +49,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${bricolage.variable}`}>
+    <html lang="es" className={`${bricolage.variable} bg-ink`}>
       <head>
-        <link rel="dns-prefetch" href="https://potenciatunegocio.eu" />
-        <link rel="preconnect" href="https://potenciatunegocio.eu" crossOrigin="" />
+        <link rel="preconnect" href="https://i.ytimg.com" />
       </head>
-      <body className="antialiased selection:bg-accent selection:text-white font-sans">
+      <body className="antialiased selection:bg-accent selection:text-white font-sans bg-ink text-cream">
         {children}
       </body>
     </html>

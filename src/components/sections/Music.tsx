@@ -1,4 +1,56 @@
+"use client";
+
+import { useState } from "react";
 import { content } from "@/app/content";
+
+function YouTubeFacade({ id, title }: { id: string; title: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  if (isPlaying) {
+    return (
+      <iframe 
+        className="w-full h-full border-0"
+        src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&color=white`}
+        title={title} 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowFullScreen
+      />
+    );
+  }
+
+  return (
+    <div 
+      onClick={() => setIsPlaying(true)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setIsPlaying(true);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-label={`Reproducir ${title}`}
+      className="group relative w-full h-full cursor-pointer overflow-hidden flex items-center justify-center bg-black focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
+    >
+      <img
+        src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-95"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-black/30 group-hover:opacity-70 transition-opacity duration-300" />
+      
+      {/* Botón de reproducción estilo Beltry */}
+      <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/90 group-hover:bg-accent text-white flex items-center justify-center shadow-[0_0_35px_rgba(255,36,82,0.6)] group-hover:scale-110 active:scale-95 transition-all duration-300 ease-out border border-white/20">
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+      <span className="sr-only">Reproducir {title}</span>
+    </div>
+  );
+}
 
 export default function Music() {
   return (
@@ -23,13 +75,9 @@ export default function Music() {
           {/* YouTube 1 */}
           <div className="w-full rounded-2xl sm:rounded-[28px] border border-accent/40 bg-ink/70 p-1.5 sm:p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,36,82,0.15)] overflow-hidden">
             <div className="relative w-full aspect-video rounded-xl sm:rounded-[20px] overflow-hidden bg-black">
-              <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
-              <iframe 
-                className="w-full h-full border-0"
-                src={`https://www.youtube-nocookie.com/embed/${content.music.youtube1}?rel=0&color=white`}
-                title="YouTube video player" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowFullScreen
+              <YouTubeFacade 
+                id={content.music.youtube1} 
+                title="Beltry — Live Set Millennium" 
               />
             </div>
           </div>
@@ -37,13 +85,9 @@ export default function Music() {
           {/* YouTube 2 */}
           <div className="w-full rounded-2xl sm:rounded-[28px] border border-accent/40 bg-ink/70 p-1.5 sm:p-2 backdrop-blur shadow-[0_0_40px_-10px_rgba(255,36,82,0.15)] overflow-hidden">
             <div className="relative w-full aspect-video rounded-xl sm:rounded-[20px] overflow-hidden bg-black">
-              <div className="absolute inset-0 flex items-center justify-center text-cream-45 text-sm -z-10">Cargando video...</div>
-              <iframe 
-                className="w-full h-full border-0"
-                src={`https://www.youtube-nocookie.com/embed/${content.music.youtube2}?rel=0&color=white`}
-                title="YouTube video player" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowFullScreen
+              <YouTubeFacade 
+                id={content.music.youtube2} 
+                title="Beltry — Sesión DJ Urbano" 
               />
             </div>
           </div>

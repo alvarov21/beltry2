@@ -108,21 +108,22 @@ ${formData.mensaje}
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-full">
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Nombre / sala</label>
-              <input required type="text" name="nombre" placeholder="Tu nombre o el de la sala" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <label htmlFor="booking-nombre" className="text-xs text-cream-45 font-sans">Nombre / sala</label>
+              <input id="booking-nombre" required type="text" name="nombre" placeholder="Tu nombre o el de la sala" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Email</label>
-              <input required type="email" name="email" placeholder="tucorreo@ejemplo.com" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <label htmlFor="booking-email" className="text-xs text-cream-45 font-sans">Email</label>
+              <input id="booking-email" required type="email" name="email" placeholder="tucorreo@ejemplo.com" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Teléfono</label>
-              <input type="tel" name="telefono" placeholder="Opcional" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <label htmlFor="booking-telefono" className="text-xs text-cream-45 font-sans">Teléfono</label>
+              <input id="booking-telefono" type="tel" name="telefono" placeholder="Opcional" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Tipo de evento</label>
+              <label htmlFor="booking-tipo" className="text-xs text-cream-45 font-sans">Tipo de evento</label>
               <div className="relative w-full">
                 <select 
+                  id="booking-tipo"
                   name="tipo" 
                   onChange={handleChange} 
                   className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none min-h-[48px] cursor-pointer"
@@ -138,9 +139,10 @@ ${formData.mensaje}
               </div>
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Fecha</label>
+              <label htmlFor="booking-fecha" className="text-xs text-cream-45 font-sans">Fecha</label>
               <div className="relative w-full">
                 <input 
+                  id="booking-fecha"
                   required 
                   type="text" 
                   name="fecha" 
@@ -161,13 +163,14 @@ ${formData.mensaje}
               </div>
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Ciudad</label>
-              <input required type="text" name="ciudad" placeholder="Ej. Barcelona" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <label htmlFor="booking-ciudad" className="text-xs text-cream-45 font-sans">Ciudad</label>
+              <input id="booking-ciudad" required type="text" name="ciudad" placeholder="Ej. Barcelona" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Hora de inicio</label>
+              <label htmlFor="booking-hora-inicio" className="text-xs text-cream-45 font-sans">Hora de inicio</label>
               <div className="relative w-full">
                 <input 
+                  id="booking-hora-inicio"
                   type="text" 
                   name="horaInicio" 
                   placeholder="Ej. 23:00"
@@ -187,9 +190,10 @@ ${formData.mensaje}
               </div>
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label className="text-xs text-cream-45 font-sans">Hora de fin</label>
+              <label htmlFor="booking-hora-fin" className="text-xs text-cream-45 font-sans">Hora de fin</label>
               <div className="relative w-full">
                 <input 
+                  id="booking-hora-fin"
                   type="text" 
                   name="horaFin" 
                   placeholder="Ej. 04:00"
@@ -211,8 +215,8 @@ ${formData.mensaje}
           </div>
           
           <div className="flex flex-col gap-2 mt-1 w-full min-w-0">
-            <label className="text-xs text-cream-45 font-sans">Mensaje</label>
-            <textarea required name="mensaje" placeholder="Aforo, horario, tipo de público, presupuesto…" rows={4} onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
+            <label htmlFor="booking-mensaje" className="text-xs text-cream-45 font-sans">Mensaje</label>
+            <textarea id="booking-mensaje" required name="mensaje" placeholder="Aforo, horario, tipo de público, presupuesto…" rows={4} onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
           </div>
           
           <p className={submitted ? "p-4 rounded-xl bg-accent/20 border border-accent/40 text-white text-center text-sm font-sans" : "hidden"}>

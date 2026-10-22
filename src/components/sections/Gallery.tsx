@@ -49,7 +49,9 @@ export default function Gallery() {
             key={idx}
             onClick={() => openLightbox(idx)}
             tabIndex={0}
-            onKeyDown={(e) => e.key === "Enter" && openLightbox(idx)}
+            role="button"
+            aria-label={`Ver en grande: ${img.alt}`}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && openLightbox(idx)}
             className="relative aspect-[4/5] rounded-[26px] overflow-hidden cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
           >
             <div className="absolute inset-0 bg-ink-2 animate-pulse -z-10" />
