@@ -155,7 +155,7 @@ ${formData.mensaje}
             ¡Recibido! Te respondemos lo antes posible para cerrar la fecha.
           </p>
 
-          <button type="submit" className="w-full bg-accent text-white font-sans text-base font-bold px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] mt-2 cursor-pointer">
+          <button type="submit" className="w-full bg-accent text-white font-sans text-base font-bold px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent/90 active:scale-[0.98] transition-all duration-200 ease-out shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] mt-2 cursor-pointer">
             Enviar solicitud
           </button>
           <span className="text-[11px] sm:text-xs text-cream-45 text-center mt-1">

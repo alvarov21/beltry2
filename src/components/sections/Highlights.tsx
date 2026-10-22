@@ -25,7 +25,7 @@ export default function Highlights() {
             <CardTag 
               key={idx} 
               {...props}
-              className={`liquid-border block relative rounded-[28px] bg-ink-2 p-6 min-h-[250px] overflow-hidden group ${item.url ? 'cursor-pointer hover:-translate-y-1 transition-transform duration-300' : ''}`}
+              className={`liquid-border block relative rounded-[28px] bg-ink-2 p-6 min-h-[250px] overflow-hidden group ${item.url ? 'cursor-pointer hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 ease-out will-change-transform' : ''}`}
             >
               {/* Imagen optimizada a sangre */}
               <Image 

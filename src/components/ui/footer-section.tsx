@@ -125,10 +125,10 @@ function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationPr
 
   return (
     <motion.div
-      initial={{ filter: 'blur(4px)', translateY: 8, opacity: 0 }}
-      whileInView={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay, duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ delay, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}

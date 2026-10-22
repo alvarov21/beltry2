@@ -9,16 +9,16 @@ export default function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav 
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-ink/80 backdrop-blur-md border-b border-cream-12 py-3" : "bg-transparent py-5"
+      className={`fixed top-0 inset-x-0 z-50 transition-[background-color,backdrop-filter,border-color,padding] duration-300 ease-out ${
+        scrolled ? "bg-ink/85 backdrop-blur-md border-b border-cream-12 py-3.5" : "bg-transparent py-5"
       }`}
     >
       <div className="w-full mx-auto px-6 md:px-12 xl:px-16 flex items-center justify-between">
@@ -35,7 +35,7 @@ export default function Nav() {
 
         <Link 
           href="#booking"
-          className="bg-accent text-white text-[14px] font-semibold px-5 py-2 rounded-full hover:bg-accent/90 transition-colors"
+          className="bg-accent text-white text-[14px] font-semibold px-5 py-2 rounded-full hover:bg-accent/90 active:scale-[0.97] transition-all duration-150 ease-out cursor-pointer"
         >
           Booking
         </Link>

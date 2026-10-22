@@ -18,26 +18,26 @@ export default function Hero() {
     if (isReduced) return;
 
     const ctx = gsap.context(() => {
-      // Parallax on text
+      // Parallax on text with smooth damping to prevent scroll judder
       gsap.to(textRef.current, {
-        y: "20vh",
+        y: "18vh",
         ease: "none",
         scrollTrigger: {
           trigger: container.current,
           start: "top top",
           end: "bottom top",
-          scrub: true,
+          scrub: 1,
         }
       });
       
       // Entrance animation
       gsap.from(textRef.current?.children || [], {
-        y: 40,
+        y: 35,
         opacity: 0,
-        duration: 1.2,
-        stagger: 0.2,
+        duration: 1,
+        stagger: 0.15,
         ease: "power3.out",
-        delay: 0.2
+        delay: 0.15
       });
     }, container);
 
@@ -67,23 +67,15 @@ export default function Hero() {
       {/* 4. Viñeta suave en los bordes */}
       <div className="absolute inset-0 z-10 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, transparent 40%, rgba(10, 5, 6, 0.6) 100%)' }} />
 
-      {/* 5. Goo reducido al mínimo (solo para dar un toque sutil de luz) */}
-      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none mix-blend-screen opacity-20">
-        <svg width="0" height="0" className="absolute">
-          <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="b"/>
-            <feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"/>
-          </filter>
-        </svg>
-        <div className="absolute inset-0" style={{ filter: "url(#goo)" }}>
-          <div className="absolute top-[20%] left-[20%] w-[30vw] h-[30vw] max-w-[300px] max-h-[300px] bg-accent/20 rounded-full blur-[60px] animate-float-a" />
-          <div className="absolute top-[40%] right-[15%] w-[25vw] h-[25vw] max-w-[250px] max-h-[250px] bg-accent/15 rounded-full blur-[50px] animate-float-b" />
-          <div className="absolute bottom-[10%] left-[40%] w-[20vw] h-[20vw] max-w-[200px] max-h-[200px] bg-accent/15 rounded-full blur-[40px] animate-float-c" />
-        </div>
+      {/* 5. Ambient glow de alta fidelidad optimizado en GPU (sin filtros SVG pesados) */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none mix-blend-screen opacity-30">
+        <div className="absolute top-[20%] left-[20%] w-[32vw] h-[32vw] max-w-[320px] max-h-[320px] bg-accent/25 rounded-full blur-[80px] animate-float-a will-change-transform" />
+        <div className="absolute top-[38%] right-[15%] w-[28vw] h-[28vw] max-w-[280px] max-h-[280px] bg-accent/20 rounded-full blur-[70px] animate-float-b will-change-transform" />
+        <div className="absolute bottom-[12%] left-[38%] w-[24vw] h-[24vw] max-w-[240px] max-h-[240px] bg-accent/20 rounded-full blur-[60px] animate-float-c will-change-transform" />
       </div>
 
       {/* 6. Contenido */}
-      <div ref={textRef} className="relative z-20 flex flex-col items-center text-center px-4 sm:px-5 w-full max-w-4xl mx-auto">
+      <div ref={textRef} className="relative z-20 flex flex-col items-center text-center px-4 sm:px-5 w-full max-w-4xl mx-auto will-change-transform">
         <p className="font-display font-semibold text-[11px] sm:text-[13px] md:text-[16px] uppercase tracking-[0.25em] sm:tracking-[0.35em] md:tracking-[0.45em] text-cream-45 mb-3 sm:mb-4">
           {content.identity.tagline}
         </p>
@@ -99,13 +91,13 @@ export default function Hero() {
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <Link 
             href="#musica"
-            className="bg-accent text-white text-[14px] font-semibold px-6 py-2.5 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] inline-flex items-center justify-center"
+            className="bg-accent text-white text-[14px] font-semibold px-6 py-2.5 rounded-full hover:bg-accent/90 active:scale-[0.97] transition-all duration-200 ease-out shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] inline-flex items-center justify-center cursor-pointer"
           >
             Escuchar La Penúltima Vol.1
           </Link>
           <Link 
             href="#booking"
-            className="border border-cream-12 hover:border-cream/40 bg-transparent text-white text-[14px] font-semibold px-6 py-2.5 rounded-full hover:bg-white/5 transition-colors inline-flex items-center justify-center"
+            className="border border-cream-12 hover:border-cream/40 bg-transparent text-white text-[14px] font-semibold px-6 py-2.5 rounded-full hover:bg-white/5 active:scale-[0.97] transition-all duration-200 ease-out inline-flex items-center justify-center cursor-pointer"
           >
             Contratar
           </Link>

@@ -55,7 +55,7 @@ export default function Music() {
             href={content.socials.youtube}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto text-center bg-accent text-white font-sans text-[15px] sm:text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-accent/90 transition-colors shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)]"
+            className="w-full sm:w-auto text-center bg-accent text-white font-sans text-[15px] sm:text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-accent/90 active:scale-[0.97] transition-all duration-200 ease-out shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] cursor-pointer"
           >
             Ver en YouTube
           </a>
@@ -63,7 +63,7 @@ export default function Music() {
             href={content.socials.tiktok}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto text-center bg-transparent border border-cream-12 text-white font-sans text-[15px] sm:text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-white/5 transition-colors"
+            className="w-full sm:w-auto text-center bg-transparent border border-cream-12 text-white font-sans text-[15px] sm:text-[16px] font-semibold px-7 py-3.5 rounded-full hover:bg-white/5 active:scale-[0.97] transition-all duration-200 ease-out cursor-pointer"
           >
             Ver en TikTok
           </a>

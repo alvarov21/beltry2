@@ -11,22 +11,29 @@ export default function Marquee() {
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (isReduced) return;
 
-    if (scrollerRef.current) {
-      const container = scrollerRef.current;
-      const content = container.firstElementChild as HTMLElement;
-      if (content) {
-        // Clone for infinite scroll
-        container.appendChild(content.cloneNode(true));
-        container.appendChild(content.cloneNode(true));
+    const container = scrollerRef.current;
+    if (!container) return;
 
-        gsap.to(container, {
-          x: "-33.333%",
-          ease: "none",
-          duration: 20,
-          repeat: -1
-        });
+    // Solo clonar si no se ha clonado aún (evita duplicados en React StrictMode y re-renders)
+    if (container.children.length === 1) {
+      const firstChild = container.firstElementChild as HTMLElement;
+      if (firstChild) {
+        container.appendChild(firstChild.cloneNode(true));
+        container.appendChild(firstChild.cloneNode(true));
       }
     }
+
+    const ctx = gsap.context(() => {
+      gsap.to(container, {
+        x: "-33.333%",
+        ease: "none",
+        duration: 32,
+        repeat: -1,
+        force3D: true,
+      });
+    }, scrollerRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

@@ -24,6 +24,7 @@ const siteTitle = "Beltry — DJ urbano y reggaeton en Barcelona | Booking";
 const siteDescription = "Beltry, DJ urbano de Barcelona: lo que suena hoy y los temazos de siempre en una misma sesión. Booking para salas, festivales y eventos privados.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://beltry2.vercel.app"),
   title: siteTitle,
   description: siteDescription,
   openGraph: {
@@ -59,10 +60,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://potenciatunegocio.eu" crossOrigin="" />
       </head>
       <body className="antialiased selection:bg-accent selection:text-white font-sans">
-        <div 
-          className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.03] mix-blend-overlay animate-grain" 
-          style={{ backgroundImage: 'url("/assets/noise.png")' }}
-        />
         {children}
       </body>
     </html>

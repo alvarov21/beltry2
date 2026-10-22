@@ -58,7 +58,7 @@ export default function Gallery() {
               alt={img.alt}
               fill
               sizes="(max-width: 768px) 100vw, 25vw"
-              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-106 will-change-transform"
             />
             {/* Degradado inferior base */}
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent pointer-events-none" />
@@ -78,7 +78,7 @@ export default function Gallery() {
         <div className="fixed inset-0 z-[100] bg-ink/95 backdrop-blur-sm flex items-center justify-center">
           <button 
             onClick={closeLightbox}
-            className="absolute top-6 right-6 text-cream hover:text-white z-10 p-2"
+            className="absolute top-6 right-6 text-cream hover:text-white z-10 p-2 active:scale-90 transition-transform duration-150 cursor-pointer"
             aria-label="Cerrar galería"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -86,7 +86,7 @@ export default function Gallery() {
           
           <button 
             onClick={prevImage}
-            className="absolute left-4 md:left-10 text-cream hover:text-white p-4"
+            className="absolute left-4 md:left-10 text-cream hover:text-white p-4 active:scale-90 transition-transform duration-150 cursor-pointer"
             aria-label="Imagen anterior"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
@@ -95,12 +95,12 @@ export default function Gallery() {
           <img 
             src={galleryImages[currentIndex].src} 
             alt={galleryImages[currentIndex].alt}
-            className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg"
+            className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg select-none"
           />
 
           <button 
             onClick={nextImage}
-            className="absolute right-4 md:right-10 text-cream hover:text-white p-4"
+            className="absolute right-4 md:right-10 text-cream hover:text-white p-4 active:scale-90 transition-transform duration-150 cursor-pointer"
             aria-label="Siguiente imagen"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
