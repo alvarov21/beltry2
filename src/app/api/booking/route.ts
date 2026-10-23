@@ -40,12 +40,20 @@ export async function POST(req: Request) {
       }),
     });
 
-    const result = await response.json().catch(() => null);
+    const text = await response.text();
+    let result: Record<string, unknown> | null = null;
+    try {
+      result = JSON.parse(text);
+    } catch {}
 
     if (!response.ok || (result && (result.success === false || result.success === "false"))) {
-      console.error("FormSubmit rejection in /api/booking:", result);
+      console.error("FormSubmit rejection in /api/booking:", { status: response.status, text, result });
       return NextResponse.json(
-        { error: result?.message || "No se pudo procesar la solicitud en este momento." },
+        { 
+          error: (typeof result?.message === "string" ? result.message : null) || "No se pudo procesar la solicitud en este momento.",
+          debugStatus: response.status,
+          debugRaw: text.slice(0, 150)
+        },
         { status: 502 }
       );
     }
