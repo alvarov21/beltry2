@@ -61,7 +61,7 @@ export default function Booking() {
       let isSuccess = false;
       let lastErrorMessage = "";
 
-      // 1. Envío directo desde el navegador (utiliza la conexión real del usuario y headers limpios)
+      // 1. Envío directo desde el navegador (conexión real del usuario)
       try {
         const directRes = await fetch(`https://formsubmit.co/ajax/${content.contact.email}`, {
           method: "POST",
@@ -77,25 +77,19 @@ export default function Booking() {
           isSuccess = true;
         } else if (directData?.message) {
           lastErrorMessage = directData.message;
+          if (lastErrorMessage.toLowerCase().includes("activation") || lastErrorMessage.toLowerCase().includes("activate")) {
+            throw new Error(`⚠️ Este formulario requiere una activación única. FormSubmit ha enviado un email a ${content.contact.email}. Por favor, abre tu buzón de Hostinger y pulsa «Activate Form» para habilitar los envíos.`);
+          }
         }
       } catch (clientErr) {
-        console.warn("Direct submission fallback to /api/booking:", clientErr);
+        if (clientErr instanceof Error && clientErr.message.includes("Activate Form")) {
+          throw clientErr;
+        }
+        console.warn("Direct submission notice:", clientErr);
       }
 
-      // 2. Si el envío directo fue bloqueado (ej. adblockers), recurre al endpoint servidor
       if (!isSuccess) {
-        const serverRes = await fetch("/api/booking", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-
-        const serverData = await serverRes.json().catch(() => null);
-        if (serverRes.ok && (serverData?.success === true || serverData?.success === "true")) {
-          isSuccess = true;
-        } else {
-          throw new Error(serverData?.error || lastErrorMessage || "No se pudo entregar la solicitud.");
-        }
+        throw new Error(lastErrorMessage || "No se pudo procesar la solicitud en este momento. Por favor inténtalo de nuevo.");
       }
 
       setSubmitted(true);
