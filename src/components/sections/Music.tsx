@@ -1,9 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { content } from "@/app/content";
 
-function YouTubeFacade({ id, title }: { id: string; title: string }) {
+function YouTubeFacade({ 
+  id, 
+  title, 
+  coverImage 
+}: { 
+  id: string; 
+  title: string; 
+  coverImage?: string; 
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   if (isPlaying) {
@@ -17,6 +26,8 @@ function YouTubeFacade({ id, title }: { id: string; title: string }) {
       />
     );
   }
+
+  const imageSrc = coverImage || `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
   return (
     <div 
@@ -32,17 +43,18 @@ function YouTubeFacade({ id, title }: { id: string; title: string }) {
       aria-label={`Reproducir ${title}`}
       className="group relative w-full h-full cursor-pointer overflow-hidden flex items-center justify-center bg-black focus:outline-none focus-visible:ring-4 focus-visible:ring-accent"
     >
-      <img
-        src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+      <Image
+        src={imageSrc}
         alt={title}
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-95"
+        fill
+        sizes="(max-width: 768px) 100vw, 896px"
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-104 will-change-transform"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-black/30 group-hover:opacity-70 transition-opacity duration-300" />
+      {/* Sutil overlay de contraste limpio para hacer resaltar el botón play sin apagar la portada */}
+      <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-colors duration-300" />
       
       {/* Botón de reproducción estilo Beltry */}
-      <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/90 group-hover:bg-accent text-white flex items-center justify-center shadow-[0_0_35px_rgba(255,36,82,0.6)] group-hover:scale-110 active:scale-95 transition-all duration-300 ease-out border border-white/20">
+      <div className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent text-white flex items-center justify-center shadow-[0_0_35px_rgba(255,36,82,0.6)] group-hover:scale-110 active:scale-95 transition-all duration-300 ease-out border border-white/20">
         <svg className="w-7 h-7 sm:w-8 sm:h-8 translate-x-0.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8 5v14l11-7z" />
         </svg>
@@ -77,7 +89,8 @@ export default function Music() {
             <div className="relative w-full aspect-video rounded-xl sm:rounded-[20px] overflow-hidden bg-black">
               <YouTubeFacade 
                 id={content.music.youtube1} 
-                title="Beltry — Live Set Millennium" 
+                title="Beltry — La Penúltima Vol. 1" 
+                coverImage="/assets/cover-la-penultima.jpg"
               />
             </div>
           </div>
@@ -87,7 +100,8 @@ export default function Music() {
             <div className="relative w-full aspect-video rounded-xl sm:rounded-[20px] overflow-hidden bg-black">
               <YouTubeFacade 
                 id={content.music.youtube2} 
-                title="Beltry — Sesión DJ Urbano" 
+                title="Beltry — Live Set Millennium" 
+                coverImage="/assets/cover-millennium.jpg"
               />
             </div>
           </div>
