@@ -13,7 +13,7 @@ export const siteConfig = {
     instagramFollowers: "5.315",
   },
   contact: {
-    email: "booking@beltry.example", // TODO-REAL: Cambiar por correo real
+    email: "info@potenciatunegocio.eu",
     whatsappUrl: "https://wa.me/34000000000", // TODO-REAL: Cambiar por número real
     whatsappDisplay: "+34 000 000 000", // TODO-REAL: Cambiar por número real
   },
