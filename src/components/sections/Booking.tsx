@@ -9,7 +9,9 @@ export default function Booking() {
     nombre: "", email: "", telefono: "", tipo: "Sala/Club",
     fecha: "", ciudad: "", horaInicio: "", horaFin: "", mensaje: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [ticketWidth, setTicketWidth] = useState(320);
 
@@ -32,25 +34,36 @@ export default function Booking() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Booking request: ${formData.tipo} - ${formData.nombre}`;
-    const body = `
-Nombre/Sala: ${formData.nombre}
-Email: ${formData.email}
-Teléfono: ${formData.telefono}
-Tipo de evento: ${formData.tipo}
-Fecha: ${formData.fecha}
-Ciudad: ${formData.ciudad}
-Horario: ${formData.horaInicio} - ${formData.horaFin}
+    setIsSubmitting(true);
+    setErrorMessage(null);
+    setSubmitted(false);
 
-Mensaje:
-${formData.mensaje}
-    `.trim();
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const mailtoUrl = `mailto:${content.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
-    setSubmitted(true);
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || "Error al enviar la solicitud.");
+      }
+
+      setSubmitted(true);
+      setFormData({
+        nombre: "", email: "", telefono: "", tipo: "Sala/Club",
+        fecha: "", ciudad: "", horaInicio: "", horaFin: "", mensaje: ""
+      });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Error al enviar la solicitud. Inténtalo de nuevo.";
+      setErrorMessage(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleTicketClick = () => {
@@ -109,15 +122,15 @@ ${formData.mensaje}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-full">
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-nombre" className="text-xs text-cream-45 font-sans">Nombre / sala</label>
-              <input id="booking-nombre" required type="text" name="nombre" placeholder="Tu nombre o el de la sala" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <input id="booking-nombre" required type="text" name="nombre" value={formData.nombre} placeholder="Tu nombre o el de la sala" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-email" className="text-xs text-cream-45 font-sans">Email</label>
-              <input id="booking-email" required type="email" name="email" placeholder="tucorreo@ejemplo.com" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <input id="booking-email" required type="email" name="email" value={formData.email} placeholder="tucorreo@ejemplo.com" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-telefono" className="text-xs text-cream-45 font-sans">Teléfono</label>
-              <input id="booking-telefono" type="tel" name="telefono" placeholder="Opcional" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <input id="booking-telefono" type="tel" name="telefono" value={formData.telefono} placeholder="Opcional" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-tipo" className="text-xs text-cream-45 font-sans">Tipo de evento</label>
@@ -125,6 +138,7 @@ ${formData.mensaje}
                 <select 
                   id="booking-tipo"
                   name="tipo" 
+                  value={formData.tipo}
                   onChange={handleChange} 
                   className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none min-h-[48px] cursor-pointer"
                 >
@@ -146,6 +160,7 @@ ${formData.mensaje}
                   required 
                   type="text" 
                   name="fecha" 
+                  value={formData.fecha}
                   placeholder="Seleccionar fecha"
                   onFocus={(e) => {
                     e.currentTarget.type = "date";
@@ -164,7 +179,7 @@ ${formData.mensaje}
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-ciudad" className="text-xs text-cream-45 font-sans">Ciudad</label>
-              <input id="booking-ciudad" required type="text" name="ciudad" placeholder="Ej. Barcelona" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <input id="booking-ciudad" required type="text" name="ciudad" value={formData.ciudad} placeholder="Ej. Barcelona" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-hora-inicio" className="text-xs text-cream-45 font-sans">Hora de inicio</label>
@@ -173,6 +188,7 @@ ${formData.mensaje}
                   id="booking-hora-inicio"
                   type="text" 
                   name="horaInicio" 
+                  value={formData.horaInicio}
                   placeholder="Ej. 23:00"
                   onFocus={(e) => {
                     e.currentTarget.type = "time";
@@ -196,6 +212,7 @@ ${formData.mensaje}
                   id="booking-hora-fin"
                   type="text" 
                   name="horaFin" 
+                  value={formData.horaFin}
                   placeholder="Ej. 04:00"
                   onFocus={(e) => {
                     e.currentTarget.type = "time";
@@ -216,19 +233,39 @@ ${formData.mensaje}
           
           <div className="flex flex-col gap-2 mt-1 w-full min-w-0">
             <label htmlFor="booking-mensaje" className="text-xs text-cream-45 font-sans">Mensaje</label>
-            <textarea id="booking-mensaje" required name="mensaje" placeholder="Aforo, horario, tipo de público, presupuesto…" rows={4} onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
+            <textarea id="booking-mensaje" required name="mensaje" value={formData.mensaje} placeholder="Aforo, horario, tipo de público, presupuesto…" rows={4} onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
           </div>
           
-          <p className={submitted ? "p-4 rounded-xl bg-accent/20 border border-accent/40 text-white text-center text-sm font-sans" : "hidden"}>
-            ¡Recibido! Te respondemos lo antes posible para cerrar la fecha.
-          </p>
+          {submitted && (
+            <div className="p-4 rounded-xl bg-accent/20 border border-accent/40 text-white text-center text-sm font-sans flex flex-col gap-1">
+              <span className="font-bold">¡Solicitud enviada con éxito!</span>
+              <span className="text-cream/80 text-xs">Nos pondremos en contacto contigo lo antes posible para cerrar la fecha.</span>
+            </div>
+          )}
 
-          <button type="submit" className="w-full bg-accent text-white font-sans text-base font-bold px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent/90 active:scale-[0.98] transition-all duration-200 ease-out shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] mt-2 cursor-pointer">
-            Enviar solicitud
+          {errorMessage && (
+            <div className="p-4 rounded-xl bg-red-500/20 border border-red-500/40 text-red-200 text-center text-sm font-sans">
+              {errorMessage}
+            </div>
+          )}
+
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="w-full bg-accent text-white font-sans text-base font-bold px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent/90 active:scale-[0.98] disabled:opacity-75 disabled:cursor-not-allowed transition-all duration-200 ease-out shadow-[0_0_20px_-5px_rgba(255,36,82,0.4)] mt-2 cursor-pointer flex items-center justify-center gap-2"
+          >
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+                <span>Enviando solicitud...</span>
+              </>
+            ) : (
+              <span>Enviar solicitud</span>
+            )}
           </button>
-          <span className="text-[11px] sm:text-xs text-cream-45 text-center mt-1">
-            * Esto abrirá tu cliente de correo (ej. Gmail, Apple Mail) con el mensaje preparado.
-          </span>
         </form>
       </div>
 
