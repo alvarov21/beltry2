@@ -40,17 +40,62 @@ export default function Booking() {
     setErrorMessage(null);
     setSubmitted(false);
 
+    const payload = {
+      _subject: `🎯 Solicitud de Contratación: ${formData.nombre} (${formData.tipo || "Evento"})`,
+      _captcha: "false",
+      _template: "table",
+      _replyto: formData.email,
+      "Nombre o Sala": formData.nombre,
+      "Email de contacto": formData.email,
+      "Teléfono": formData.telefono || "No especificado",
+      "Tipo de evento": formData.tipo || "No especificado",
+      "Fecha del evento": formData.fecha || "No especificada",
+      "Ciudad": formData.ciudad || "No especificada",
+      "Horario": (formData.horaInicio || formData.horaFin)
+        ? `${formData.horaInicio || "?"} - ${formData.horaFin || "?"}`
+        : "No especificado",
+      "Mensaje o detalles": formData.mensaje,
+    };
+
     try {
-      const res = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      let isSuccess = false;
+      let lastErrorMessage = "";
 
-      const data = await res.json().catch(() => null);
+      // 1. Envío directo desde el navegador (utiliza la conexión real del usuario y headers limpios)
+      try {
+        const directRes = await fetch(`https://formsubmit.co/ajax/${content.contact.email}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
 
-      if (!res.ok) {
-        throw new Error(data?.error || "Error al enviar la solicitud.");
+        const directData = await directRes.json().catch(() => null);
+        if (directRes.ok && (directData?.success === true || directData?.success === "true")) {
+          isSuccess = true;
+        } else if (directData?.message) {
+          lastErrorMessage = directData.message;
+        }
+      } catch (clientErr) {
+        console.warn("Direct submission fallback to /api/booking:", clientErr);
+      }
+
+      // 2. Si el envío directo fue bloqueado (ej. adblockers), recurre al endpoint servidor
+      if (!isSuccess) {
+        const serverRes = await fetch("/api/booking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        const serverData = await serverRes.json().catch(() => null);
+        if (serverRes.ok && (serverData?.success === true || serverData?.success === "true")) {
+          isSuccess = true;
+        } else {
+          throw new Error(serverData?.error || lastErrorMessage || "No se pudo entregar la solicitud.");
+        }
       }
 
       setSubmitted(true);
