@@ -162,7 +162,15 @@ export default function Booking() {
         {/* Glow decorativo de fondo */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-accent/5 blur-[100px] rounded-full pointer-events-none" />
         
-        <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-4 sm:gap-6 w-full max-w-full p-4 sm:p-8 md:p-12 bg-ink-2 border border-cream-12 rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl overflow-hidden box-border">
+        <form 
+          onSubmit={handleSubmit} 
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && (e.target as HTMLElement).tagName !== "TEXTAREA") {
+              e.preventDefault();
+            }
+          }}
+          className="relative z-10 flex flex-col gap-4 sm:gap-6 w-full max-w-full p-4 sm:p-8 md:p-12 bg-ink-2 border border-cream-12 rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl overflow-hidden box-border"
+        >
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-full">
             <div className="flex flex-col gap-2 w-full min-w-0">
@@ -203,19 +211,14 @@ export default function Booking() {
                 <input 
                   id="booking-fecha"
                   required 
-                  type="text" 
+                  type="date" 
                   name="fecha" 
                   value={formData.fecha}
-                  placeholder="Seleccionar fecha"
-                  onFocus={(e) => {
-                    e.currentTarget.type = "date";
+                  onClick={(e) => {
                     try { e.currentTarget.showPicker?.(); } catch {}
                   }}
-                  onBlur={(e) => {
-                    if (!e.currentTarget.value) e.currentTarget.type = "text";
-                  }}
                   onChange={handleChange} 
-                  className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px]" 
+                  className={`w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px] cursor-pointer ${formData.fecha ? "text-white" : "text-cream-45"}`} 
                 />
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-cream-45">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -231,19 +234,14 @@ export default function Booking() {
               <div className="relative w-full">
                 <input 
                   id="booking-hora-inicio"
-                  type="text" 
+                  type="time" 
                   name="horaInicio" 
                   value={formData.horaInicio}
-                  placeholder="Ej. 23:00"
-                  onFocus={(e) => {
-                    e.currentTarget.type = "time";
+                  onClick={(e) => {
                     try { e.currentTarget.showPicker?.(); } catch {}
                   }}
-                  onBlur={(e) => {
-                    if (!e.currentTarget.value) e.currentTarget.type = "text";
-                  }}
                   onChange={handleChange} 
-                  className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px]" 
+                  className={`w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px] cursor-pointer ${formData.horaInicio ? "text-white" : "text-cream-45"}`} 
                 />
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-cream-45">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -255,19 +253,14 @@ export default function Booking() {
               <div className="relative w-full">
                 <input 
                   id="booking-hora-fin"
-                  type="text" 
+                  type="time" 
                   name="horaFin" 
                   value={formData.horaFin}
-                  placeholder="Ej. 04:00"
-                  onFocus={(e) => {
-                    e.currentTarget.type = "time";
+                  onClick={(e) => {
                     try { e.currentTarget.showPicker?.(); } catch {}
                   }}
-                  onBlur={(e) => {
-                    if (!e.currentTarget.value) e.currentTarget.type = "text";
-                  }}
                   onChange={handleChange} 
-                  className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px]" 
+                  className={`w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px] cursor-pointer ${formData.horaFin ? "text-white" : "text-cream-45"}`} 
                 />
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-cream-45">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
