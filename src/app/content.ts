@@ -43,9 +43,9 @@ export const content = {
   },
   gallery: [
     { src: "/assets/hero-master.jpg", alt: "Beltry con micrófono en cabina en directo", position: "object-[center_28%]" },
-    { src: "/assets/gallery-3.jpg", alt: "Beltry en cabina bajo las luces del club" },
+    { src: "/assets/gallery-2-master.jpg", alt: "Beltry en cabina con auriculares y luz roja", position: "object-[center_35%]" },
     { src: "/assets/gallery-3-master.jpg", alt: "Beltry pinchando en cabina con auriculares en CRVSH", position: "object-[center_55%]" },
-    { src: "/assets/gallery-1.jpg", alt: "Beltry en el escenario con llamaradas de fuego" },
+    { src: "/assets/gallery-4-master.jpg", alt: "Beltry a los platos frente a la pantalla de CRVSH", position: "object-[center_40%]" },
   ],
   venues: [
     "Millennium",
