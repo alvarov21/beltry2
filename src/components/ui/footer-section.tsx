@@ -87,19 +87,22 @@ export function Footer() {
               <div className="mb-10 md:mb-0">
                 <h3 className="text-xs font-semibold text-white uppercase tracking-wider">{section.label}</h3>
                 <ul className="text-cream-45 mt-4 space-y-3 text-sm">
-                  {section.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        href={link.href}
-                        target={link.href.startsWith('#') ? "_self" : "_blank"}
-                        rel="noopener noreferrer"
-                        className="hover:text-accent inline-flex items-center transition-all duration-300 font-sans"
-                      >
-                        {link.icon && <link.icon className="me-2 size-4" />}
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
+                  {section.links.map((link) => {
+                    const isExternal = link.href.startsWith('http://') || link.href.startsWith('https://');
+                    return (
+                      <li key={link.title}>
+                        <a
+                          href={link.href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noopener noreferrer" : undefined}
+                          className="hover:text-accent inline-flex items-center transition-all duration-300 font-sans"
+                        >
+                          {link.icon && <link.icon className="me-2 size-4" />}
+                          {link.title}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </AnimatedContainer>

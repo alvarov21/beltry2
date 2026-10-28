@@ -61,9 +61,11 @@ export default function Booking() {
       let isSuccess = false;
       let lastErrorMessage = "";
 
+      const formRecipient = content.contact.bookingFormRecipient || content.contact.email;
+
       // 1. Envío directo desde el navegador (conexión real del usuario)
       try {
-        const directRes = await fetch(`https://formsubmit.co/ajax/${content.contact.email}`, {
+        const directRes = await fetch(`https://formsubmit.co/ajax/${formRecipient}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -78,7 +80,7 @@ export default function Booking() {
         } else if (directData?.message) {
           lastErrorMessage = directData.message;
           if (lastErrorMessage.toLowerCase().includes("activation") || lastErrorMessage.toLowerCase().includes("activate")) {
-            throw new Error(`⚠️ Este formulario requiere una activación única. FormSubmit ha enviado un email a ${content.contact.email}. Por favor, abre tu buzón de Hostinger y pulsa «Activate Form» para habilitar los envíos.`);
+            throw new Error(`⚠️ Este formulario requiere una activación única. FormSubmit ha enviado un email a ${formRecipient}. Por favor, abre tu buzón y pulsa «Activate Form» para habilitar los envíos.`);
           }
         }
       } catch (clientErr) {

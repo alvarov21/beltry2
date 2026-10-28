@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const recipient = content.contact.email || "info@potenciatunegocio.eu";
+    const recipient = content.contact.bookingFormRecipient || content.contact.email || "info@potenciatunegocio.eu";
 
     const response = await fetch(`https://formsubmit.co/ajax/${recipient}`, {
       method: "POST",

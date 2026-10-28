@@ -58,15 +58,16 @@ export const content = {
     "Occo Sevilla"
   ],
   contact: {
-    email: "info@potenciatunegocio.eu",
-    phone: "+34 600 000 000",
-    whatsapp: "https://wa.me/34600000000",
+    email: "infobeltry@gmail.com",
+    bookingFormRecipient: "info@potenciatunegocio.eu",
+    phone: "+34 695 01 23 22",
+    whatsapp: "https://wa.me/34695012322",
     presskitUrl: "/assets/presskit-beltry-v2.pdf"
   },
   socials: {
     tiktok: "https://tiktok.com/@beltry_dj",
     instagram: "https://instagram.com/beltry_dj",
-    youtube: "https://youtube.com/@[PENDIENTE:CANAL]",
+    youtube: "https://www.youtube.com/@beltry",
     linktree: "https://linktr.ee/beltry"
   }
 };

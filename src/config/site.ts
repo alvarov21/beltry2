@@ -5,7 +5,7 @@ export const siteConfig = {
   social: {
     instagram: "https://instagram.com/beltry_dj",
     tiktok: "https://www.tiktok.com/@beltry_dj",
-    youtube: "https://www.youtube.com/@beltry_dj",
+    youtube: "https://www.youtube.com/@beltry",
   },
   metrics: {
     tiktokFollowers: "158,3 mil",
@@ -13,9 +13,9 @@ export const siteConfig = {
     instagramFollowers: "5.315",
   },
   contact: {
-    email: "info@potenciatunegocio.eu",
-    whatsappUrl: "https://wa.me/34000000000", // TODO-REAL: Cambiar por número real
-    whatsappDisplay: "+34 000 000 000", // TODO-REAL: Cambiar por número real
+    email: "infobeltry@gmail.com",
+    whatsappUrl: "https://wa.me/34695012322",
+    whatsappDisplay: "+34 695 01 23 22",
   },
   releases: {
     latestMix: {
