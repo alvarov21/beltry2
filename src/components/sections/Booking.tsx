@@ -6,8 +6,11 @@ import AdmitOneTicket, { playShutterSound } from "@/components/ui/admit-one-tick
 
 export default function Booking() {
   const [formData, setFormData] = useState({
-    nombre: "", email: "", telefono: "", tipo: "Sala/Club",
-    fecha: "", ciudad: "", horaInicio: "", horaFin: "", mensaje: ""
+    nombre: "",
+    contacto: "",
+    fecha: "",
+    ciudad: "",
+    mensaje: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -40,20 +43,16 @@ export default function Booking() {
     setErrorMessage(null);
     setSubmitted(false);
 
+    const isEmail = formData.contacto.includes("@");
     const payload = {
-      _subject: `🎯 Solicitud de Contratación: ${formData.nombre} (${formData.tipo || "Evento"})`,
+      _subject: `🎯 Solicitud de Contratación: ${formData.nombre}${formData.ciudad ? ` (${formData.ciudad})` : ""}`,
       _captcha: "false",
       _template: "table",
-      _replyto: formData.email,
+      ...(isEmail ? { _replyto: formData.contacto.trim() } : {}),
       "Nombre o Sala": formData.nombre,
-      "Email de contacto": formData.email,
-      "Teléfono": formData.telefono || "No especificado",
-      "Tipo de evento": formData.tipo || "No especificado",
+      "Contacto (Email o Teléfono)": formData.contacto,
       "Fecha del evento": formData.fecha || "No especificada",
       "Ciudad": formData.ciudad || "No especificada",
-      "Horario": (formData.horaInicio || formData.horaFin)
-        ? `${formData.horaInicio || "?"} - ${formData.horaFin || "?"}`
-        : "No especificado",
       "Mensaje o detalles": formData.mensaje,
     };
 
@@ -96,8 +95,11 @@ export default function Booking() {
 
       setSubmitted(true);
       setFormData({
-        nombre: "", email: "", telefono: "", tipo: "Sala/Club",
-        fecha: "", ciudad: "", horaInicio: "", horaFin: "", mensaje: ""
+        nombre: "",
+        contacto: "",
+        fecha: "",
+        ciudad: "",
+        mensaje: "",
       });
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Error al enviar la solicitud. Inténtalo de nuevo.";
@@ -171,48 +173,42 @@ export default function Booking() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-full">
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-nombre" className="text-xs text-cream-45 font-sans">Nombre / sala</label>
-              <input id="booking-nombre" required type="text" name="nombre" value={formData.nombre} placeholder="Tu nombre o el de la sala" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
+              <input 
+                id="booking-nombre" 
+                required 
+                type="text" 
+                name="nombre" 
+                value={formData.nombre} 
+                placeholder="Tu nombre o el de la sala" 
+                onChange={handleChange} 
+                className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" 
+              />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
-              <label htmlFor="booking-email" className="text-xs text-cream-45 font-sans">Email</label>
-              <input id="booking-email" required type="email" name="email" value={formData.email} placeholder="tucorreo@ejemplo.com" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
-            </div>
-            <div className="flex flex-col gap-2 w-full min-w-0">
-              <label htmlFor="booking-telefono" className="text-xs text-cream-45 font-sans">Teléfono</label>
-              <input id="booking-telefono" type="tel" name="telefono" value={formData.telefono} placeholder="Opcional" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
-            </div>
-            <div className="flex flex-col gap-2 w-full min-w-0">
-              <label htmlFor="booking-tipo" className="text-xs text-cream-45 font-sans">Tipo de evento</label>
-              <div className="relative w-full">
-                <select 
-                  id="booking-tipo"
-                  name="tipo" 
-                  value={formData.tipo}
-                  onChange={handleChange} 
-                  className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none min-h-[48px] cursor-pointer"
-                >
-                  <option value="Sala/Club" className="bg-ink">Sala / Club</option>
-                  <option value="Festival" className="bg-ink">Festival</option>
-                  <option value="Evento privado" className="bg-ink">Evento privado</option>
-                  <option value="Otro" className="bg-ink">Otro</option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-cream-45">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
-              </div>
+              <label htmlFor="booking-contacto" className="text-xs text-cream-45 font-sans">Contacto (Email o Teléfono)</label>
+              <input 
+                id="booking-contacto" 
+                required 
+                type="text" 
+                name="contacto" 
+                value={formData.contacto} 
+                placeholder="correo@ejemplo.com o 600 000 000" 
+                onChange={handleChange} 
+                className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" 
+              />
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-fecha" className="text-xs text-cream-45 font-sans">Fecha</label>
               <div className="relative w-full">
                 <input 
-                  id="booking-fecha"
+                  id="booking-fecha" 
                   required 
                   type="date" 
                   name="fecha" 
-                  value={formData.fecha}
+                  value={formData.fecha} 
                   onClick={(e) => {
                     try { e.currentTarget.showPicker?.(); } catch {}
-                  }}
+                  }} 
                   onChange={handleChange} 
                   className={`w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px] cursor-pointer ${formData.fecha ? "text-white" : "text-cream-45"}`} 
                 />
@@ -223,51 +219,31 @@ export default function Booking() {
             </div>
             <div className="flex flex-col gap-2 w-full min-w-0">
               <label htmlFor="booking-ciudad" className="text-xs text-cream-45 font-sans">Ciudad</label>
-              <input id="booking-ciudad" required type="text" name="ciudad" value={formData.ciudad} placeholder="Ej. Barcelona" onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" />
-            </div>
-            <div className="flex flex-col gap-2 w-full min-w-0">
-              <label htmlFor="booking-hora-inicio" className="text-xs text-cream-45 font-sans">Hora de inicio</label>
-              <div className="relative w-full">
-                <input 
-                  id="booking-hora-inicio"
-                  type="time" 
-                  name="horaInicio" 
-                  value={formData.horaInicio}
-                  onClick={(e) => {
-                    try { e.currentTarget.showPicker?.(); } catch {}
-                  }}
-                  onChange={handleChange} 
-                  className={`w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px] cursor-pointer ${formData.horaInicio ? "text-white" : "text-cream-45"}`} 
-                />
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-cream-45">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 w-full min-w-0">
-              <label htmlFor="booking-hora-fin" className="text-xs text-cream-45 font-sans">Hora de fin</label>
-              <div className="relative w-full">
-                <input 
-                  id="booking-hora-fin"
-                  type="time" 
-                  name="horaFin" 
-                  value={formData.horaFin}
-                  onClick={(e) => {
-                    try { e.currentTarget.showPicker?.(); } catch {}
-                  }}
-                  onChange={handleChange} 
-                  className={`w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 pr-10 text-base md:text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [color-scheme:dark] min-h-[48px] cursor-pointer ${formData.horaFin ? "text-white" : "text-cream-45"}`} 
-                />
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-cream-45">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-              </div>
+              <input 
+                id="booking-ciudad" 
+                required 
+                type="text" 
+                name="ciudad" 
+                value={formData.ciudad} 
+                placeholder="Ej. Barcelona, Madrid..." 
+                onChange={handleChange} 
+                className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3 sm:py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors min-h-[48px]" 
+              />
             </div>
           </div>
           
           <div className="flex flex-col gap-2 mt-1 w-full min-w-0">
-            <label htmlFor="booking-mensaje" className="text-xs text-cream-45 font-sans">Mensaje</label>
-            <textarea id="booking-mensaje" required name="mensaje" value={formData.mensaje} placeholder="Aforo, horario, tipo de público, presupuesto…" rows={4} onChange={handleChange} className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
+            <label htmlFor="booking-mensaje" className="text-xs text-cream-45 font-sans">Mensaje o detalles</label>
+            <textarea 
+              id="booking-mensaje" 
+              required 
+              name="mensaje" 
+              value={formData.mensaje} 
+              placeholder="Cuéntanos sobre el evento: tipo de fiesta, aforo aproximado, horario orientativo, dudas…" 
+              rows={4} 
+              onChange={handleChange} 
+              className="w-full max-w-full min-w-0 box-border rounded-xl sm:rounded-2xl border border-cream-12 bg-ink/50 px-4 py-3.5 text-base md:text-sm text-white placeholder:text-cream/30 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"
+            ></textarea>
           </div>
           
           {submitted && (
